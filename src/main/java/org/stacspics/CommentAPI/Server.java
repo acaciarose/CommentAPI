@@ -5,9 +5,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Path;
 
-
-
-
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.http.server.Request;
 import org.glassfish.grizzly.http.server.Response;
@@ -23,7 +20,7 @@ import java.net.URLConnection;
 import java.net.URL;
 
 
-//Placeholder main class taken from examples on studres, minor alterations, just to test imports
+//Placeholder main class taken from examples on studres, minor alterations
 public class Server {
     // Base URI the Grizzly HTTP server will listen on
     public  final String BASE_URI = "http://localhost:8080/myapp/";
@@ -51,7 +48,6 @@ public class Server {
 
         System.in.read();
 
-        System.out.println("Stopping.....");
 
 
     }

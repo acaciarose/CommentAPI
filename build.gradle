@@ -7,7 +7,7 @@
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
-apply plugin: 'eclipse'
+apply plugin: 'jacoco'
 apply plugin: 'application'
 mainClassName = "org.stacspics.CommentAPI.Main"
 
@@ -19,6 +19,11 @@ repositories {
 }
 
 ext.jerseyVersion = '2.26'
+
+jacoco {
+    toolVersion = "0.8.0"
+    reportsDir = file("$buildDir/JacocoTestReports")
+}
 
 // In this section you declare the dependencies for your production and test code
 dependencies {

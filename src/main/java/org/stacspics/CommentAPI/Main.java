@@ -2,6 +2,7 @@ package org.stacspics.CommentAPI;
 
 import java.io.IOException;
 
+//Main class, mostly unused currently except for experimental/pre-test purposes
 public class Main {
 
     public static void main(String[] args)  {
@@ -12,6 +13,7 @@ public class Main {
 
         
         CommentClient c = new CommentClient();
+
         try {
             c.makeSampleGETRequest();
 
