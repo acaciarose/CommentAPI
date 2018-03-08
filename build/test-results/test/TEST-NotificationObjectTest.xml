@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="NotificationObjectTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-03-08T17:58:18" hostname="pc3-001-l.cs.st-andrews.ac.uk" time="0.001">
+  <properties/>
+  <testcase name="testNotificationObjectCreation" classname="NotificationObjectTest" time="0.001"/>
+  <testcase name="testNotificationMarkAsRead" classname="NotificationObjectTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
