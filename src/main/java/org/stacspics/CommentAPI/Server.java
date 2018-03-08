@@ -20,15 +20,13 @@ import java.net.URLConnection;
 import java.net.URL;
 
 
-//Placeholder main class taken from examples on studres, minor alterations
+//Server class, originnaly from examples on studres, with alterations
 public class Server {
     // Base URI the Grizzly HTTP server will listen on
     public  final String BASE_URI = "http://localhost:8080/myapp/";
-    public HttpServer hserver;
+    private HttpServer server;
 
-    public HttpServer startServer() {
-        System.setProperty("https.protocols", "TLSv1.1");
-
+    public void startServer() {
 
         // create a resource config that scans for JAX-RS resources and providers
         // in org.stacscal.rest package
@@ -36,20 +34,18 @@ public class Server {
 
         // create and start a new instance of grizzly http server
         // exposing the Jersey application at BASE_URI
-        return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
-    }
+        server = GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
 
-
-    public void runServer(String[] args) throws IOException {
-        final HttpServer server = startServer();
         System.out.println(String.format("Jersey app started with WADL available at "
-                + "%sapplication.wadl\nHit enter to stop it...", BASE_URI));
-            
-
-        System.in.read();
-
-
-
+        + "%sapplication.wadl\nHit enter to stop it...", BASE_URI));
     }
+
+    public void stopServer() {
+        server.stop();
+    }
+
+
+
+
 }
 

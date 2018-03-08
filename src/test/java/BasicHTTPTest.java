@@ -18,11 +18,11 @@ import java.net.MalformedURLException;
 //Paths may have to be changed later when "helloworldTEST" is removed!
 public class BasicHTTPTest {
 
-    static Server s= new Server();
+    static Server s = new Server();
 
     @BeforeClass
     public static void setUp() throws Exception {        
-        s.hserver = s.startServer();
+        s.startServer();
     }
 
     @Test
@@ -49,7 +49,7 @@ public class BasicHTTPTest {
 
     @AfterClass 
     public static void tearDown() {
-        s.hserver.stop();
+       s.stopServer();
 
     }
 
