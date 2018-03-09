@@ -20,6 +20,7 @@ repositories {
 
 ext.jerseyVersion = '2.26'
 
+
 jacoco {
     toolVersion = "0.8.0"
     reportsDir = file("$buildDir/JacocoTestReports")

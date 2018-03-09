@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CommentObjectTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-03-08T18:01:07" hostname="pc3-001-l.cs.st-andrews.ac.uk" time="0.001">
+<testsuite name="CommentObjectTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-03-09T14:49:41" hostname="pc3-053-l.cs.st-andrews.ac.uk" time="0.0">
   <properties/>
   <testcase name="testUpvoteDownvote" classname="CommentObjectTest" time="0.0"/>
   <testcase name="testCommentObjectCreation" classname="CommentObjectTest" time="0.0"/>
