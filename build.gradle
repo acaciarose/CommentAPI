@@ -26,6 +26,10 @@ jacoco {
     reportsDir = file("$buildDir/JacocoTestReports")
 }
 
+test{
+testLogging.showStandardStreams = true
+}
+
 // In this section you declare the dependencies for your production and test code
 dependencies {
     compile 'org.glassfish.jersey.core:jersey-server:'+jerseyVersion

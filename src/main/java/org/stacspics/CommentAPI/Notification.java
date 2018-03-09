@@ -6,7 +6,7 @@ package org.stacspics.CommentAPI;
 public class Notification {
     private String notificationText;
     private boolean read;
-    private Comment commentText;
+    private Comment comment;
 
     public Notification(String text, Comment comment) {
         notificationText = text;
@@ -16,7 +16,7 @@ public class Notification {
     }
 
     public Comment getComment() {
-        return commentText;
+        return comment;
     }
 
     public String getNotificationText() {

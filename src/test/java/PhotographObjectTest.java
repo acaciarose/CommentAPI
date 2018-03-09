@@ -6,13 +6,15 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.stacspics.CommentAPI.Notification;
 import org.stacspics.CommentAPI.Photograph;
+import org.stacspics.CommentAPI.SystemStorage;
 import org.stacspics.CommentAPI.Comment;
 import org.stacspics.CommentAPI.IDGenerator;
 
 
 public class PhotographObjectTest {
 
-    static Photograph p, p2;
+    static Photograph p;
+    static Photograph p2;
     static IDGenerator IDgen;
 
     @BeforeClass
@@ -44,5 +46,7 @@ public class PhotographObjectTest {
         //Reset p (make sure tests can run independently)
         p  = new Photograph("User1", IDgen); 
     }
+
+
 
 }

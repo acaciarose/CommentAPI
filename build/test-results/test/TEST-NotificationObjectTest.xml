@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="NotificationObjectTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-03-09T15:20:38" hostname="pc3-053-l.cs.st-andrews.ac.uk" time="0.002">
+<testsuite name="NotificationObjectTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-03-09T21:05:43" hostname="pc3-001-l.cs.st-andrews.ac.uk" time="0.001">
   <properties/>
   <testcase name="testNotificationObjectCreation" classname="NotificationObjectTest" time="0.001"/>
   <testcase name="testNotificationMarkAsRead" classname="NotificationObjectTest" time="0.0"/>

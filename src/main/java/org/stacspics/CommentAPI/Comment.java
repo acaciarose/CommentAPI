@@ -52,8 +52,21 @@ public class Comment {
         return commentID;
     }
 
+    public String getText() {
+        return commentText;
+    }
+
     public String getCommenter() {
         return userName;
+    }
+
+    public boolean remove(User user) {
+        if (user.isAdmin()) {
+            commentText = "This comment has been removed by an administrator.";
+            return true;
+        }
+
+        return false;
     }
 
 
