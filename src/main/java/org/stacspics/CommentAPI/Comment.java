@@ -16,11 +16,11 @@ public class Comment {
     private ArrayList<Comment> children;
     private boolean isTopLevel;
 
-    public Comment(String text, String username, boolean topLevel, CommentIDGenerator cigen) {
+    public Comment(String text, String username, boolean topLevel, IDGenerator IDgen) {
         commentText = text;
         userName = username;
         numberOfUpvotes = 0;
-        commentID = cigen.createCommentID();
+        commentID = IDgen.createCommentID();
         timestamp = new Timestamp(System.currentTimeMillis());
         children = new ArrayList<Comment>();
         isTopLevel = topLevel;

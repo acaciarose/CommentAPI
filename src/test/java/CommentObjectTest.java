@@ -5,19 +5,19 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.stacspics.CommentAPI.Comment;
-import org.stacspics.CommentAPI.CommentIDGenerator;
+import org.stacspics.CommentAPI.IDGenerator;
 
 
 public class CommentObjectTest {
 
     static Comment topLevelComment;
     static Comment childComment;
-    static CommentIDGenerator commentIDgen;
+    static IDGenerator IDgen;
 
     @BeforeClass
     public static void setUp() {
-        commentIDgen = new CommentIDGenerator();
-        topLevelComment = new Comment("This is a comment on a photograph!", "User1", true, commentIDgen);
+        IDgen = new IDGenerator();
+        topLevelComment = new Comment("This is a comment on a photograph!", "User1", true, IDgen);
 
     }
 
@@ -47,13 +47,13 @@ public class CommentObjectTest {
     @Test
     public void testAddComment() {
 
-        Comment reply = new Comment("This is a reply!", "User2", false, commentIDgen);
+        Comment reply = new Comment("This is a reply!", "User2", false, IDgen);
         topLevelComment.addReply(reply);
         assertEquals(topLevelComment.getAllReplies().size(), 1);
         assertEquals(topLevelComment.getAllReplies().get(0), reply);
 
         //Make sure we reset number of comments afterwards (make sure tests are independent)
-        topLevelComment = new Comment("This is a comment on a photograph!", "User1", true, commentIDgen);
+        topLevelComment = new Comment("This is a comment on a photograph!", "User1", true, IDgen);
     }
 
 
