@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import com.google.gson.*;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 
 public class SystemStorage {
 
@@ -138,6 +142,15 @@ public class SystemStorage {
         Gson gson = new Gson();
         return gson.toJson(this);
     } 
+
+    public void writeToStorage(String filename)  throws IOException {
+        File file = new File(filename);
+        FileWriter f = new FileWriter(file);
+        f.write(this.turnToJsonString());
+        f.close();
+        
+
+    }
 
 
 

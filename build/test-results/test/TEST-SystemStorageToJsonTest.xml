@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SystemStorageToJsonTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-03-11T16:19:39" hostname="pc3-064-l.cs.st-andrews.ac.uk" time="0.006">
+<testsuite name="SystemStorageToJsonTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-03-11T16:57:18" hostname="pc3-064-l.cs.st-andrews.ac.uk" time="0.016">
   <properties/>
-  <testcase name="testSystemStorageToGsonFunction" classname="SystemStorageToJsonTest" time="0.006"/>
+  <testcase name="testWriteSystemStorageToFile" classname="SystemStorageToJsonTest" time="0.011"/>
+  <testcase name="testSystemStorageToGsonFunction" classname="SystemStorageToJsonTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
