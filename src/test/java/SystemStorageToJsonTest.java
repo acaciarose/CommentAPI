@@ -28,10 +28,10 @@ public class SystemStorageToJsonTest {
 
         SystemStorage parsedstorage = gson.fromJson(jsonstring, SystemStorage.class);
 
-        assertEquals(ss.getUsers(), parsedstorage.getUsers());
+        assertEquals(ss.getUsers().size(), parsedstorage.getUsers().size());
         assertEquals(ss.getPhotosFromUserName("User1").size(), parsedstorage.getPhotosFromUserName("User1").size());
         assertEquals(ss.getPhotos().size(), parsedstorage.getPhotos().size());
-        assertEquals(parsedstorage.getPhotos().get(0).getClass(), Photograph.class);
+        assertEquals(parsedstorage.getPhotos().get("User1").get(0).getClass(), Photograph.class);
 
 
 

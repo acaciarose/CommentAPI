@@ -135,7 +135,8 @@ public class SystemStorage {
     }
 
     public String turnToJsonString() {
-        return "";
+        Gson gson = new Gson();
+        return gson.toJson(this);
     } 
 
 
