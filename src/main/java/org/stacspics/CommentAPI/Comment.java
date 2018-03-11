@@ -2,6 +2,7 @@ package org.stacspics.CommentAPI;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import com.google.gson.*;
 
 //Comment object, containing text and information about comment
 
@@ -69,7 +70,10 @@ public class Comment {
         return false;
     }
 
-
-
+    public String turnToJsonString() {
+        return "";
+        
+        
+    }
 
 }

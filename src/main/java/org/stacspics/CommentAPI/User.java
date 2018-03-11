@@ -2,8 +2,7 @@ package org.stacspics.CommentAPI;
 
 import java.util.ArrayList;
 
-//Notification object
-//Each user has a list of these
+//User object - keep track of user's comments and notifications
 
 public class User {
 
@@ -44,7 +43,7 @@ public class User {
         // //Notify other user (refactor into separate method later)
          User otherUser = ss.getUserFromUserName(photo.getUser());
          String notificationText = "User" + username + "commented on your photo : " + "commenttext"; 
-         Notification n = new Notification(, comment);
+         Notification n = new Notification(notificationText, comment);
          otherUser = notify(otherUser, n);
 
          ss.addUserToSystem(otherUser);
@@ -64,7 +63,7 @@ public class User {
         
         // //Notify other user (refactor into separate method later)
         User otherUser = ss.getUserFromUserName(comment.getCommenter());
-        Notification n = new Notification("User" + username + "replied to your comment : ", replytext);
+        Notification n = new Notification("User" + username + "replied to your comment : "+ replytext, reply);
         otherUser = notify(otherUser, n);
 
         ss.addUserToSystem(otherUser);

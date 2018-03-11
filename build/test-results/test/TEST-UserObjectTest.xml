@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="UserObjectTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-03-09T22:21:50" hostname="pc3-001-l.cs.st-andrews.ac.uk" time="0.002">
+<testsuite name="UserObjectTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2018-03-11T15:26:26" hostname="pc3-064-l.cs.st-andrews.ac.uk" time="0.003">
   <properties/>
-  <testcase name="testNotificationsAreRead" classname="UserObjectTest" time="0.002"/>
+  <testcase name="testNotificationAppearingWhenReplyToComment" classname="UserObjectTest" time="0.001"/>
+  <testcase name="testNotificationAppearingWhenCommentOnPhoto" classname="UserObjectTest" time="0.0"/>
+  <testcase name="testAddCommentOnPhoto" classname="UserObjectTest" time="0.0"/>
+  <testcase name="testOriginalAdminUser" classname="UserObjectTest" time="0.0"/>
+  <testcase name="testOriginalUsers" classname="UserObjectTest" time="0.0"/>
+  <testcase name="testAdminCanRemoveComment" classname="UserObjectTest" time="0.0"/>
+  <testcase name="testNotificationsAreRead" classname="UserObjectTest" time="0.0"/>
+  <testcase name="testAddReplyOnComment" classname="UserObjectTest" time="0.0"/>
+  <testcase name="testOnlyUnreadNotificationsAreReturned" classname="UserObjectTest" time="0.0"/>
+  <testcase name="testUpvote" classname="UserObjectTest" time="0.0"/>
+  <testcase name="testNonAdminCantRemoveComment" classname="UserObjectTest" time="0.0"/>
+  <testcase name="testDownvote" classname="UserObjectTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

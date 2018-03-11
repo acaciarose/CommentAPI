@@ -6,17 +6,17 @@ package org.stacspics.CommentAPI;
 public class Notification {
     private String notificationText;
     private boolean read;
-    private Comment comment;
+    private Comment notificationComment;
 
     public Notification(String text, Comment comment) {
         notificationText = text;
         read = false;
-        commentText = comment;
+        notificationComment = comment;
 
     }
 
     public Comment getComment() {
-        return comment;
+        return notificationComment;
     }
 
     public String getNotificationText() {

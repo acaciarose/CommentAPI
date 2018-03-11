@@ -27,7 +27,7 @@ public class BasicHTTPTest {
 
     @Test
     public void testStatusCodeWhenPathPresent() throws IOException, MalformedURLException{
-        URL url = new URL("http", "localhost", 8080, "/myapp/helloworldTEST");
+        URL url = new URL("http", "localhost", 8080, "/myapp/helloworld/de");
         final URLConnection urlconn = url.openConnection();
         final HttpURLConnection conn = (HttpURLConnection) urlconn;
         conn.connect();

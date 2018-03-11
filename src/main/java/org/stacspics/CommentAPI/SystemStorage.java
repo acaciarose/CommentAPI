@@ -18,11 +18,14 @@ public class SystemStorage {
     private HashMap<String, User> users;
     private HashMap<String, ArrayList<Photograph>> photographs;
     private IDGenerator IDgen;
+    private HashMap<Integer, Comment> comments;
 
     public SystemStorage() {
         users = new HashMap<String, User>();
         photographs = new HashMap<String, ArrayList<Photograph>>();
         IDgen = new IDGenerator();
+
+        populateDummyStorage();
     }
 
     //Add photo to photos list
@@ -65,6 +68,14 @@ public class SystemStorage {
         return photographs;
     }
 
+    public void addCommentToSystem(Comment comment) {
+        comments.put(comment.getID(), comment);
+    }
+
+    public Comment getCommentByID(int ID) {
+        return comments.get(ID);
+    }
+
     //Populate system storage with dummy users and photos
     //for demonstration purposes
     public void populateDummyStorage() {
@@ -89,6 +100,42 @@ public class SystemStorage {
         addPhotoToSystem(photo1);
         addPhotoToSystem(photo2);
 
+        //user1.postComment("hi", photo1,this);
+
+
+    }
+
+    //A more comprehensive dummy storage generator, with comments
+    public void populateDummyStorageWithComments() {
+                //Reset - for test purposes
+                users = new HashMap<String, User>();
+                photographs = new HashMap<String, ArrayList<Photograph>>();
+                IDgen = new IDGenerator();
+        
+                User user1 = new User("User1", false);
+                User user2 = new User("User2", false);
+                User user3 = new User("User3", false);
+                User adminUser = new User("Admin", true);
+        
+                addUserToSystem(user1);
+                addUserToSystem(user2);
+                addUserToSystem(user3);
+                addUserToSystem(adminUser);
+        
+                Photograph photo1 = new Photograph("User1", IDgen);
+                Photograph photo2 = new Photograph("User2", IDgen);
+        
+                addPhotoToSystem(photo1);
+                addPhotoToSystem(photo2);
+        
+                user1.postComment("Hello", photo1,this);
+                Comment comment = user1.getComments().get(0);
+                comment.downvote();
+                user2.postComment("This is a reply", comment, this);
+                Comment reply = user2.getComments().get(0);
+                reply.upvote();
+                reply.upvote();
+ 
 
     }
 

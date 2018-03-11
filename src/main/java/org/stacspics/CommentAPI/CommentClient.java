@@ -10,6 +10,10 @@ import java.net.URLConnection;
 import java.io.IOException;
 import java.net.URI;
 
+import java.lang.StringBuffer;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 import java.net.URL;
 
 //Client class. Designed to take requests from user (command line), relay them to the server, and display the response (if any)
@@ -19,11 +23,9 @@ public class CommentClient {
     //Test client, just to see if we can make a request/response
     //modified from lecture slides
     public void makeSampleGETRequest() throws IOException {
-        System.out.println("Client doing stuff!!!!");
-        System.setProperty("https.protocols", "TLSv1.1");
 
         //Manually set URL for now
-        URL url = new URL("http", "localhost", 8080, "/myapp/helloworldTEST");
+        URL url = new URL("http", "localhost", 8080, "/myapp/helloworld/de");
 
         System.out.println( "Connecting using URL : " + url.toString());
 
@@ -34,13 +36,18 @@ public class CommentClient {
         final HttpURLConnection conn = (HttpURLConnection) urlconn;
         conn.connect();
         System.err.println(conn.getResponseCode() + ": " + conn.getResponseMessage());
-        final Map<String, List<String>> headers = conn.getHeaderFields();
-        for (String headerName : headers.keySet()) {
-        System.out.println(headerName + ":");
-        for (String headerValue : headers.get(headerName)) {
-        System.out.println(" " + headerValue);
-        }
-        }
+        BufferedReader in = new BufferedReader(
+		        new InputStreamReader(conn.getInputStream()));
+		String inputLine;
+		StringBuffer response = new StringBuffer();
+
+		while ((inputLine = in.readLine()) != null) {
+			response.append(inputLine);
+		}
+        in.close();
+        
+        System.out.println(response.toString());
+
         } else {
         throw new RuntimeException("Got URLConnection of type " + urlconn.getClass());
         }
