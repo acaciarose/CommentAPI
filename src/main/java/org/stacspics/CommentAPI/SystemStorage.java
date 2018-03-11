@@ -9,8 +9,6 @@ import org.stacspics.CommentAPI.Photograph;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.stacspics.CommentAPI.Comment;
-import org.stacspics.CommentAPI.IDGenerator;
 
 public class SystemStorage {
 
@@ -100,7 +98,6 @@ public class SystemStorage {
         addPhotoToSystem(photo1);
         addPhotoToSystem(photo2);
 
-        //user1.postComment("hi", photo1,this);
 
 
     }

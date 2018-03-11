@@ -2,6 +2,7 @@ package org.stacspics.CommentAPI;
 
 import org.stacspics.CommentAPI.Comment;
 import java.util.ArrayList;
+import com.google.gson.*;
 
 //Represents one photograph object
 //Doesn't currently contain any actual images but could easily be extended
@@ -31,6 +32,13 @@ public class Photograph {
 
     public void addComment(Comment comment) {
         comments.add(comment);
+    }
+
+    public String turnToJsonString() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+        
+        
     }
 
 

@@ -10,7 +10,7 @@ import org.stacspics.CommentAPI.User;
 import org.stacspics.CommentAPI.SystemStorage;
 
 
-//Tests the jsonify functions for comment
+//Tests the jsonify functions for user
 public class UserToGsonTest {
     static SystemStorage ss;
 

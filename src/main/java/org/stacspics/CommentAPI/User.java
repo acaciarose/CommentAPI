@@ -1,6 +1,7 @@
 package org.stacspics.CommentAPI;
 
 import java.util.ArrayList;
+import com.google.gson.*;
 
 //User object - keep track of user's comments and notifications
 

@@ -1,5 +1,7 @@
 package org.stacspics.CommentAPI;
 
+import com.google.gson.*;
+
 //Notification object
 //Each user has a list of these
 
@@ -29,6 +31,13 @@ public class Notification {
 
     public void markAsRead() {
         read = true;
+    }
+
+    public String turnToJsonString() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+        
+        
     }
 
 }

@@ -4,12 +4,11 @@ import org.junit.After;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.stacspics.CommentAPI.Notification;
+import org.stacspics.CommentAPI.User;
 import org.stacspics.CommentAPI.Photograph;
 import org.stacspics.CommentAPI.Comment;
 import org.stacspics.CommentAPI.IDGenerator;
 import org.stacspics.CommentAPI.SystemStorage;
-import org.stacspics.CommentAPI.User;
 
 //Tests the user object
 //This test class relies on the System Storage class, unlike the rest
@@ -109,8 +108,8 @@ public class UserObjectTest {
 
     @Test
     public void testNonAdminCantRemoveComment() {
-        User user1 = ss.getUserFromUserName("User1");
-        User notadmin = ss.getUserFromUserName("User2");
+       User user1 = ss.getUserFromUserName("User1");
+       User notadmin = ss.getUserFromUserName("User2");
         Photograph photoOwnedByUser2 = ss.getPhotosFromUserName("User2").get(0);
          user1.postComment("This is a comment on a photo", photoOwnedByUser2, ss);
          Comment toBeRemoved = user1.getComments().get(0);
