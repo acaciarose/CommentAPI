@@ -10,7 +10,7 @@ import org.stacspics.CommentAPI.Comment;
 import org.stacspics.CommentAPI.SystemStorage;
 
 
-//Tests the jsonify functions for various objects
+//Tests the jsonify functions for comment
 public class CommentToGsonTest {
     static SystemStorage ss;
 
@@ -26,8 +26,6 @@ public class CommentToGsonTest {
         Comment c = new Comment("Comment", "User1", false, ss.getGenerator() );
 
         String jsonstring = c.turnToJsonString();
-
-        System.out.println(jsonstring);
 
         Comment parsedc = gson.fromJson(jsonstring, Comment.class);
 

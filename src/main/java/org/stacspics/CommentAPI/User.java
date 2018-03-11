@@ -108,6 +108,11 @@ public class User {
 
     }
 
+    public String turnToJsonString() {
+        return "";    
+        
+    }
+
   
 
 

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CommentToGsonTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-03-11T15:28:24" hostname="pc3-064-l.cs.st-andrews.ac.uk" time="0.062">
+<testsuite name="CommentToGsonTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-03-11T15:35:14" hostname="pc3-064-l.cs.st-andrews.ac.uk" time="0.017">
   <properties/>
-  <testcase name="testCommentToGsonFunction" classname="CommentToGsonTest" time="0.062"/>
-  <system-out><![CDATA[{"commentText":"Comment","userName":"User1","commentID":0,"numberOfUpvotes":0,"timestamp":"Mar 11, 2018 3:28:24 PM","children":[],"isTopLevel":false}
-]]></system-out>
+  <testcase name="testCommentToGsonFunction" classname="CommentToGsonTest" time="0.017"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
