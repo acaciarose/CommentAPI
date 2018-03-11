@@ -3,11 +3,9 @@ package org.stacspics.CommentAPI;
 //Stores list of all users and photographs on the system
 //as well as the ID Generator
 
-import org.stacspics.CommentAPI.Notification;
-import org.stacspics.CommentAPI.Photograph;
-
 import java.util.ArrayList;
 import java.util.HashMap;
+import com.google.gson.*;
 
 
 public class SystemStorage {
@@ -135,6 +133,10 @@ public class SystemStorage {
  
 
     }
+
+    public String turnToJsonString() {
+        return "";
+    } 
 
 
 
