@@ -29,7 +29,7 @@ public class SystemStorage {
     }
 
     //Add photo to photos list
-    public void addPhotoToSystem(Photograph photo) {
+    public void addPhotoToSystem(Photograph photo) throws IOException {
         ArrayList<Photograph> newphotos = getPhotosFromUserName(photo.getUser());
 
         if (newphotos == null) {
@@ -39,13 +39,15 @@ public class SystemStorage {
         newphotos.add(photo);
 
         photographs.put(photo.getUser(), newphotos  );
+        writeToStorage("storage.json");
 
     }
 
     //This currently will overwrite users 
-    //Not a huge problem now since method only used for adding dummies
-    public void addUserToSystem(User user) {
+    //Not a huge problem now since can't create users
+    public void addUserToSystem(User user) throws IOException {
         users.put(user.getName(), user);
+        writeToStorage("storage.json");
     }
 
     public IDGenerator getGenerator() {
@@ -80,8 +82,13 @@ public class SystemStorage {
         return photographs;
     }
 
-    public void addCommentToSystem(Comment comment) {
+    public HashMap<Integer, Comment> getComments() {
+        return comments;
+    }
+
+    public void addCommentToSystem(Comment comment) throws IOException {
         comments.put(comment.getID(), comment);
+        writeToStorage("storage.json");
     }
 
     public Comment getCommentByID(int ID) {
@@ -90,8 +97,10 @@ public class SystemStorage {
 
     //Populate system storage with dummy users and photos
     //for demonstration purposes
-    public void populateDummyStorage() {
+    public boolean populateDummyStorage() {
         //Reset - for test purposes
+
+        try {
         users = new HashMap<String, User>();
         photographs = new HashMap<String, ArrayList<Photograph>>();
         IDgen = new IDGenerator();
@@ -112,12 +121,18 @@ public class SystemStorage {
         addPhotoToSystem(photo1);
         addPhotoToSystem(photo2);
 
+        return true;
+    }
+    catch (IOException e) {
+        return false;
+    }
 
 
     }
 
     //A more comprehensive dummy storage generator, with comments
-    public void populateDummyStorageWithComments() {
+    public boolean populateDummyStorageWithComments() {
+        try {
                 //Reset - for test purposes
                 users = new HashMap<String, User>();
                 photographs = new HashMap<String, ArrayList<Photograph>>();
@@ -146,6 +161,12 @@ public class SystemStorage {
                 Comment reply = user2.getComments().get(0);
                 reply.upvote(this);
                 reply.upvote(this);
+
+                return true;
+        }
+        catch (IOException e) {
+            return false;
+        }
  
 
     }

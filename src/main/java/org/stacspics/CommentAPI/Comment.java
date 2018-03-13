@@ -1,5 +1,6 @@
 package org.stacspics.CommentAPI;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import com.google.gson.*;
@@ -36,19 +37,31 @@ public class Comment {
         return children;
     }
 
-    public void upvote(SystemStorage ss) {
+    public boolean upvote(SystemStorage ss) {
         numberOfUpvotes++;
 
+        try {
         //Update comment in storage
         ss.addCommentToSystem(this);
+        return true;
+        }
+        catch (IOException e) {
+            return false;
+        }
     }
 
     //Number of upvotes can be negative!
-    public void downvote(SystemStorage ss) {
+    public boolean downvote(SystemStorage ss) {
         numberOfUpvotes--;
 
-        //Update comment in storage
-        ss.addCommentToSystem(this);
+        try {
+            //Update comment in storage
+            ss.addCommentToSystem(this);
+            return true;
+            }
+            catch (IOException e) {
+                return false;
+            }
     }
 
     public int getUpvotes() {
@@ -71,10 +84,16 @@ public class Comment {
         if (user.isAdmin()) {
             commentText = "This comment has been removed by an administrator.";
 
-            //Update comment in storage
-            ss.addCommentToSystem(this);
+            try {
+                //Update comment in storage
+                ss.addCommentToSystem(this);
+                return true;
+                }
+                catch (IOException e) {
+                    return false;
+                }
 
-            return true;
+
         }
 
         return false;
