@@ -36,13 +36,19 @@ public class Comment {
         return children;
     }
 
-    public void upvote() {
+    public void upvote(SystemStorage ss) {
         numberOfUpvotes++;
+
+        //Update comment in storage
+        ss.addCommentToSystem(this);
     }
 
     //Number of upvotes can be negative!
-    public void downvote() {
+    public void downvote(SystemStorage ss) {
         numberOfUpvotes--;
+
+        //Update comment in storage
+        ss.addCommentToSystem(this);
     }
 
     public int getUpvotes() {
@@ -61,9 +67,13 @@ public class Comment {
         return userName;
     }
 
-    public boolean remove(User user) {
+    public boolean remove(User user, SystemStorage ss) {
         if (user.isAdmin()) {
             commentText = "This comment has been removed by an administrator.";
+
+            //Update comment in storage
+            ss.addCommentToSystem(this);
+
             return true;
         }
 

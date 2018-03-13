@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BasicHTTPTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-03-13T16:45:04" hostname="pc2-015-l.cs.st-andrews.ac.uk" time="0.277">
+<testsuite name="BasicHTTPTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-03-13T17:15:29" hostname="pc2-015-l.cs.st-andrews.ac.uk" time="0.292">
   <properties/>
-  <testcase name="testStatusCodeWhenPathNotPresent" classname="BasicHTTPTest" time="0.235"/>
-  <testcase name="testStatusCodeWhenPathPresent" classname="BasicHTTPTest" time="0.041"/>
+  <testcase name="testStatusCodeWhenPathNotPresent" classname="BasicHTTPTest" time="0.25"/>
+  <testcase name="testStatusCodeWhenPathPresent" classname="BasicHTTPTest" time="0.042"/>
   <system-out><![CDATA[Jersey app started with WADL available at http://localhost:8080/myapp/application.wadl
 Hit enter to stop it...
 ]]></system-out>
-  <system-err><![CDATA[Mar 13, 2018 4:45:04 PM org.glassfish.grizzly.http.server.NetworkListener start
+  <system-err><![CDATA[Mar 13, 2018 5:15:29 PM org.glassfish.grizzly.http.server.NetworkListener start
 INFO: Started listener bound to [localhost:8080]
-Mar 13, 2018 4:45:04 PM org.glassfish.grizzly.http.server.HttpServer start
+Mar 13, 2018 5:15:29 PM org.glassfish.grizzly.http.server.HttpServer start
 INFO: [HttpServer] Started.
-Mar 13, 2018 4:45:05 PM org.glassfish.grizzly.http.server.NetworkListener shutdownNow
+Mar 13, 2018 5:15:29 PM org.glassfish.grizzly.http.server.NetworkListener shutdownNow
 INFO: Stopped listener bound to [localhost:8080]
 ]]></system-err>
 </testsuite>

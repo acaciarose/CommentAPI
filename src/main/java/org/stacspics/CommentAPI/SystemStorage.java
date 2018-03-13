@@ -24,8 +24,8 @@ public class SystemStorage {
         users = new HashMap<String, User>();
         photographs = new HashMap<String, ArrayList<Photograph>>();
         IDgen = new IDGenerator();
+        comments = new HashMap<Integer, Comment>();
 
-        populateDummyStorage();
     }
 
     //Add photo to photos list
@@ -141,11 +141,11 @@ public class SystemStorage {
         
                 user1.postComment("Hello", photo1,this);
                 Comment comment = user1.getComments().get(0);
-                comment.downvote();
+                comment.downvote(this);
                 user2.postComment("This is a reply", comment, this);
                 Comment reply = user2.getComments().get(0);
-                reply.upvote();
-                reply.upvote();
+                reply.upvote(this);
+                reply.upvote(this);
  
 
     }

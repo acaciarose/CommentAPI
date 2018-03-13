@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="NotificationObjectTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-03-13T16:45:03" hostname="pc2-015-l.cs.st-andrews.ac.uk" time="0.002">
+<testsuite name="NotificationObjectTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-03-13T17:15:28" hostname="pc2-015-l.cs.st-andrews.ac.uk" time="0.001">
   <properties/>
-  <testcase name="testNotificationObjectCreation" classname="NotificationObjectTest" time="0.002"/>
+  <testcase name="testNotificationObjectCreation" classname="NotificationObjectTest" time="0.001"/>
   <testcase name="testNotificationMarkAsRead" classname="NotificationObjectTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

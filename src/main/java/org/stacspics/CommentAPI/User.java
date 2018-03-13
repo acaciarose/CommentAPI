@@ -40,6 +40,15 @@ public class User {
         //Add comment on other user's photo
         photo.addComment(comment);
 
+        //Write subject comment back to storage
+        ss.addCommentToSystem(comment);
+
+        //Update photo in storage
+        ss.addPhotoToSystem(photo);
+
+        //Add this user back to storage, with his/her new comments list
+        ss.addUserToSystem(this);
+
 
         // //Notify other user (refactor into separate method later)
          User otherUser = ss.getUserFromUserName(photo.getUser());
@@ -47,6 +56,7 @@ public class User {
          Notification n = new Notification(notificationText, comment);
          otherUser = notify(otherUser, n);
 
+         //Finally, update other user in storage
          ss.addUserToSystem(otherUser);
 
     }
@@ -61,12 +71,22 @@ public class User {
         //Add reply on other user's comment
         comment.addReply(reply);
 
+        //Write subject comment back to storage
+        ss.addCommentToSystem(comment);
+
+        //Add new reply comment to storage
+        ss.addCommentToSystem(reply);
+
+        //Add this user back to storage, with his/her new comments list
+        ss.addUserToSystem(this);
+
         
         // //Notify other user (refactor into separate method later)
         User otherUser = ss.getUserFromUserName(comment.getCommenter());
         Notification n = new Notification("User" + username + "replied to your comment : "+ replytext, reply);
         otherUser = notify(otherUser, n);
 
+        //Finally, write other user to system
         ss.addUserToSystem(otherUser);
     }
 
@@ -94,6 +114,7 @@ public class User {
     }
 
     //Get notifications without marking them as read
+    //Mostly used for debugging purposes, will be removed 
     private ArrayList<Notification> getNotificationsSilently() {
         return notifications;
     }

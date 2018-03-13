@@ -94,7 +94,7 @@ public class UserObjectTest {
         Photograph photoOwnedByUser2 = ss.getPhotosFromUserName("User2").get(0);
          user1.postComment("This is a comment on a photo", photoOwnedByUser2, ss);
          Comment toBeRemoved = user1.getComments().get(0);
-         assertTrue(toBeRemoved.remove(admin));
+         assertTrue(toBeRemoved.remove(admin, ss));
          //Comment shouldn't have been removed, just the text changed
          assertEquals(user1.getComments().size(), 1); 
          assertEquals(user1.getComments().get(0).getText(), "This comment has been removed by an administrator.");
@@ -113,7 +113,7 @@ public class UserObjectTest {
         Photograph photoOwnedByUser2 = ss.getPhotosFromUserName("User2").get(0);
          user1.postComment("This is a comment on a photo", photoOwnedByUser2, ss);
          Comment toBeRemoved = user1.getComments().get(0);
-         assertFalse(toBeRemoved.remove(notadmin));
+         assertFalse(toBeRemoved.remove(notadmin, ss));
 
          assertNotEquals(user1.getComments().get(0).getText(), "This comment has been removed by an administrator.");
 
@@ -182,7 +182,7 @@ public class UserObjectTest {
         Photograph photoOwnedByUser2 = ss.getPhotosFromUserName("User2").get(0);
          user1.postComment("This is a comment on a photo", photoOwnedByUser2, ss);
          Comment comment = user1.getComments().get(0);
-         comment.upvote();
+         comment.upvote(ss);
          assertEquals(comment.getUpvotes(), 1);
 
          assertEquals(user1.getComments().get(0).getUpvotes(), 1);
@@ -199,9 +199,9 @@ public class UserObjectTest {
         Photograph photoOwnedByUser2 = ss.getPhotosFromUserName("User2").get(0);
          user1.postComment("This is a comment on a photo", photoOwnedByUser2, ss);
          Comment comment = user1.getComments().get(0);
-         comment.downvote();
-         comment.downvote();
-         comment.downvote();
+         comment.downvote(ss);
+         comment.downvote(ss);
+         comment.downvote(ss);
 
          assertEquals(comment.getUpvotes(), -3);
 
