@@ -10,28 +10,19 @@ import java.util.ArrayList;
 //REST handlers for getting/making/altering comments
 @Path("/comments")
 public class CommentHandlers {
-SystemStorage ss = new SystemStorage();
+SystemStorage ss = new SystemStorage().readFromStorage("storage.json");
 
 
 @GET
 @Path("/{commentID}")
 @Produces("text/plain")
 public String getCommentFromID(@PathParam("CommentID") int commentID) {
-//Needs to be updated, but returns text for now
-return "Comment";
-}
+    Comment c = ss.getCommentByID(commentID);
+    System.out.println(c.getCommenter());
+
+    //Return JSON string of comment
+    return c.turnToJsonString();
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+}

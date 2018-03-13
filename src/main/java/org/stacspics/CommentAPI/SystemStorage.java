@@ -8,8 +8,12 @@ import java.util.HashMap;
 import com.google.gson.*;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 
 public class SystemStorage {
@@ -181,7 +185,21 @@ public class SystemStorage {
         FileWriter f = new FileWriter(file);
         f.write(this.turnToJsonString());
         f.close();
-        
+    }
+
+    public SystemStorage readFromStorage(String filename) {
+        System.out.println("hello im trying");
+        try{
+        File file = new File(filename);
+        FileReader f = new FileReader(file);
+        Gson gson = new Gson();
+        String jsonstring = new String(Files.readAllBytes(Paths.get(filename)));
+        SystemStorage read =  gson.fromJson(jsonstring, SystemStorage.class);
+        return read;
+        }
+        catch (IOException e) {
+            return null;
+        }
 
     }
 

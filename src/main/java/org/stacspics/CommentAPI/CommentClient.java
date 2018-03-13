@@ -20,7 +20,7 @@ import java.net.URL;
 public class CommentClient {
 
     //GET request with given path
-    public int sendGetRequestAndReturnServerResponse(String path) throws IOException {
+    public String sendGetRequestAndReturnServerResponse(String path) throws IOException {
  
                 URL url = new URL("http", "localhost", 8080, "/myapp" + path);
      
@@ -34,23 +34,25 @@ public class CommentClient {
                 
                 System.err.println(conn.getResponseCode() + ": " + conn.getResponseMessage());
 
-                BufferedReader in = new BufferedReader(
-                        new InputStreamReader(conn.getInputStream()));
-                String inputLine;
-                StringBuffer response = new StringBuffer();
+
         
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
+                    BufferedReader in = new BufferedReader(
+                            new InputStreamReader(conn.getInputStream()));
+                    String inputLine;
+                    String response = "";
+            
+                    //The last line of the HTTP response is the body/text we want
+                    while ((inputLine = in.readLine()) != null) {
+                        response = inputLine;
+                    }
+
                 in.close();
                 
-                System.out.println(response.toString());
 
-                //Currently just return response code, later return actual information
-                return conn.getResponseCode();
+                //Return server's response (a JSON string containing the information we asked for)
+                return response;
 
-                
-                //return response.toString();
+            
         
                 } else {
                 throw new RuntimeException("Got URLConnection of type " + urlconn.getClass());
