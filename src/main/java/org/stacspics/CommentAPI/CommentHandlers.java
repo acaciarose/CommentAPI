@@ -25,4 +25,11 @@ public String getCommentFromID(@PathParam("CommentID") int commentID) {
 
 }
 
+@GET
+@Path("/comments/{commentID}/replies")
+@Produces("text/plain")
+public String getRepliesToComment(@PathParam("CommentID") int commentID) {
+return "";
+}
+
 }

@@ -4,8 +4,11 @@ import org.junit.AfterClass;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
 
 import org.junit.Test;
 
@@ -38,15 +41,25 @@ public class RestCommentHandlersTest {
 
 
     @Test
-    public void testReadComment() throws IOException {
+    public void testGetCommentByIDComment() throws IOException {
         String response = cc.sendGetRequestAndReturnServerResponse("/comments/0");
         Comment comment = ss.getCommentByID(0);
         Comment returned = gson.fromJson(response, Comment.class);
         assertEquals(comment.getText(), returned.getText());
         assertEquals(comment.getCommenter(), returned.getCommenter());
+    
+    }
+
+
+    @Test
+    public void testGetRepliesToComment() throws IOException {
+        String response = cc.sendGetRequestAndReturnServerResponse("/comments/0/replies");
+        ArrayList<Comment> replies = ss.getCommentByID(0).getAllReplies();
+        ArrayList<Comment> returned = gson.fromJson(response, new TypeToken<List<Comment>>(){}.getType());
+        assertEquals(replies.size(), returned.size());
+        assertEquals(replies.get(0).getCommenter(), returned.get(0).getCommenter());
         
-
-
+    
     }
 
     @AfterClass
