@@ -60,6 +60,16 @@ public class SystemStorage {
         return photographs.get(name);
     }
 
+    public Photograph getPhotoFromID(int photoID) {
+        for (Photograph photo : photographs.values()) {
+            if (photo.getID() == photoID) {
+                return photo;
+            }
+        }
+
+        return null;
+    }
+
     public HashMap<String, User> getUsers() {
         return users;
     }
