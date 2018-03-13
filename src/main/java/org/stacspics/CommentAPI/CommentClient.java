@@ -20,7 +20,7 @@ import java.net.URL;
 public class CommentClient {
 
     //GET request
-    public String sendGetRequestAndReturnServerResponse(String path) {
+    public String sendGetRequestAndReturnServerResponse(String path) throws IOException {
                 //Manually set URL for now
                 URL url = new URL("http", "localhost", 8080, "/myapp" + path);
      

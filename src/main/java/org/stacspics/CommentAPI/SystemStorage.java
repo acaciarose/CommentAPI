@@ -61,10 +61,12 @@ public class SystemStorage {
     }
 
     public Photograph getPhotoFromID(int photoID) {
-        for (Photograph photo : photographs.values()) {
+        for (ArrayList<Photograph> userPhotos : photographs.values()) {
+            for (Photograph photo : userPhotos) {
             if (photo.getID() == photoID) {
                 return photo;
             }
+        }
         }
 
         return null;
