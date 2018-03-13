@@ -19,9 +19,9 @@ import java.net.URL;
 //Client class. Designed to take requests from user (command line), relay them to the server, and display the response (if any)
 public class CommentClient {
 
-    //GET request
-    public String sendGetRequestAndReturnServerResponse(String path) throws IOException {
-                //Manually set URL for now
+    //GET request with given path
+    public int sendGetRequestAndReturnServerResponse(String path) throws IOException {
+ 
                 URL url = new URL("http", "localhost", 8080, "/myapp" + path);
      
                 final String protocol = url.getProtocol();
@@ -30,7 +30,10 @@ public class CommentClient {
                 if (urlconn instanceof HttpURLConnection) {
                 final HttpURLConnection conn = (HttpURLConnection) urlconn;
                 conn.connect();
+
+                
                 System.err.println(conn.getResponseCode() + ": " + conn.getResponseMessage());
+
                 BufferedReader in = new BufferedReader(
                         new InputStreamReader(conn.getInputStream()));
                 String inputLine;
@@ -42,8 +45,12 @@ public class CommentClient {
                 in.close();
                 
                 System.out.println(response.toString());
-                //This currently just returns the whole response.
-                return response.toString();
+
+                //Currently just return response code, later return actual information
+                return conn.getResponseCode();
+
+                
+                //return response.toString();
         
                 } else {
                 throw new RuntimeException("Got URLConnection of type " + urlconn.getClass());

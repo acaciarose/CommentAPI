@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="RestCommentHandlersTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-03-13T22:14:20" hostname="pc3-018-l.cs.st-andrews.ac.uk" time="0.006">
+  <properties/>
+  <testcase name="testReadComment" classname="RestCommentHandlersTest" time="0.006"/>
+  <system-out><![CDATA[Jersey app started with WADL available at http://localhost:8080/myapp/application.wadl
+Hit enter to stop it...
+Comment
+]]></system-out>
+  <system-err><![CDATA[Mar 13, 2018 10:14:20 PM org.glassfish.grizzly.http.server.NetworkListener start
+INFO: Started listener bound to [localhost:8080]
+Mar 13, 2018 10:14:20 PM org.glassfish.grizzly.http.server.HttpServer start
+INFO: [HttpServer-1] Started.
+200: OK
+]]></system-err>
+</testsuite>

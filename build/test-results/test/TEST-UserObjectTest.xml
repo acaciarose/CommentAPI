@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="UserObjectTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2018-03-13T18:24:52" hostname="pc2-015-l.cs.st-andrews.ac.uk" time="0.502">
+<testsuite name="UserObjectTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2018-03-13T22:14:20" hostname="pc3-018-l.cs.st-andrews.ac.uk" time="0.404">
   <properties/>
-  <testcase name="testNotificationAppearingWhenReplyToComment" classname="UserObjectTest" time="0.001"/>
+  <testcase name="testNotificationAppearingWhenReplyToComment" classname="UserObjectTest" time="0.0"/>
   <testcase name="testNotificationAppearingWhenCommentOnPhoto" classname="UserObjectTest" time="0.0"/>
-  <testcase name="testAddCommentOnPhoto" classname="UserObjectTest" time="0.058"/>
+  <testcase name="testAddCommentOnPhoto" classname="UserObjectTest" time="0.049"/>
   <testcase name="testOriginalAdminUser" classname="UserObjectTest" time="0.0"/>
   <testcase name="testOriginalUsers" classname="UserObjectTest" time="0.0"/>
-  <testcase name="testAdminCanRemoveComment" classname="UserObjectTest" time="0.057"/>
-  <testcase name="testNotificationsAreRead" classname="UserObjectTest" time="0.05"/>
-  <testcase name="testAddReplyOnComment" classname="UserObjectTest" time="0.066"/>
-  <testcase name="testOnlyUnreadNotificationsAreReturned" classname="UserObjectTest" time="0.075"/>
-  <testcase name="testUpvote" classname="UserObjectTest" time="0.046"/>
-  <testcase name="testNonAdminCantRemoveComment" classname="UserObjectTest" time="0.088"/>
-  <testcase name="testDownvote" classname="UserObjectTest" time="0.056"/>
+  <testcase name="testAdminCanRemoveComment" classname="UserObjectTest" time="0.049"/>
+  <testcase name="testNotificationsAreRead" classname="UserObjectTest" time="0.045"/>
+  <testcase name="testAddReplyOnComment" classname="UserObjectTest" time="0.06"/>
+  <testcase name="testOnlyUnreadNotificationsAreReturned" classname="UserObjectTest" time="0.072"/>
+  <testcase name="testUpvote" classname="UserObjectTest" time="0.041"/>
+  <testcase name="testNonAdminCantRemoveComment" classname="UserObjectTest" time="0.038"/>
+  <testcase name="testDownvote" classname="UserObjectTest" time="0.047"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
