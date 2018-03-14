@@ -29,6 +29,13 @@ public String getUsersComments(@PathParam("username") String username) {
     return gson.toJson(allUserComments);
 }
 
+@GET
+@Path("/{username}/notifications")
+@Produces("text/plain")
+public String getUsersNotifications(@PathParam("username") String username) {
+    return "";
+}
+
 @POST
 @Consumes("text/plain")
 @Produces("text/plain")

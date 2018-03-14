@@ -14,10 +14,7 @@ import com.google.gson.reflect.TypeToken;
 
 import org.junit.Test;
 
-import org.stacspics.CommentAPI.CommentClient;
-import org.stacspics.CommentAPI.Server;
-import org.stacspics.CommentAPI.Comment;
-import org.stacspics.CommentAPI.SystemStorage;
+import org.stacspics.CommentAPI.*;
 
 
 //Tests REST server handlers for reading/making comments, etc
@@ -97,8 +94,19 @@ public class RestUserHandlersTest {
         //Write known/dummy values to storage
         ss.writeToStorage("storage.json");
 
-
     }
+
+    @Test
+    public void testGetNotifications() throws IOException {
+        User user = ss.getUserFromUserName("User1");
+        String response = cc.sendGetRequestAndReturnServerResponse("/users/User1/notifications");
+        ArrayList<Notification> notifications = user.getNotifications();
+        ArrayList<Notification> recieved = gson.fromJson(response, new TypeToken<List<Notification>>(){}.getType());
+        assertEquals(notifications.size(), recieved.size());
+        assertEquals(notifications.get(0).getNotificationText(), recieved.get(0).getNotificationText());
+    
+    }
+
 
 
 
