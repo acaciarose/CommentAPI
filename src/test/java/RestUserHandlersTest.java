@@ -100,10 +100,18 @@ public class RestUserHandlersTest {
     public void testGetNotifications() throws IOException {
         User user = ss.getUserFromUserName("User1");
         String response = cc.sendGetRequestAndReturnServerResponse("/users/User1/notifications");
-        ArrayList<Notification> notifications = user.getNotifications();
+        ArrayList<Notification> notifications = user.getNotifications(ss);
         ArrayList<Notification> recieved = gson.fromJson(response, new TypeToken<List<Notification>>(){}.getType());
         assertEquals(notifications.size(), recieved.size());
         assertEquals(notifications.get(0).getNotificationText(), recieved.get(0).getNotificationText());
+
+        //make sure notifications were read
+        ss = ss.readFromStorage("storage.json");
+        user = ss.getUserFromUserName("User1");
+        notifications = user.getNotifications(ss);
+        assertEquals(notifications.size(), 0);
+
+
     
     }
 

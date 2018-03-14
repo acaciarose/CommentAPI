@@ -73,10 +73,10 @@ public class SystemStorageTest {
 
         assertEquals(ss.getPhotoFromID(0).getComments().size(), 1);
 
-        assertEquals(user1.getNotifications().size(), 1);
+        assertEquals(user1.getNotifications(ss).size(), 1);
 
         //Check that they were read
-        assertEquals(user1.getNotifications().size(), 0);
+        assertEquals(user1.getNotifications(ss).size(), 0);
 
     }
 
@@ -106,10 +106,10 @@ public class SystemStorageTest {
 
         assertEquals(ss.getComments().size(), 2);
 
-        assertEquals(user1.getNotifications().size(), 1);
+        assertEquals(user1.getNotifications(ss).size(), 1);
 
         //Check that they were read
-        assertEquals(user2.getNotifications().size(), 1);
+        assertEquals(user2.getNotifications(ss).size(), 1);
 
     }
 

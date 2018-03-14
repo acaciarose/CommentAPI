@@ -33,7 +33,8 @@ public String getUsersComments(@PathParam("username") String username) {
 @Path("/{username}/notifications")
 @Produces("text/plain")
 public String getUsersNotifications(@PathParam("username") String username) {
-    return "";
+    User user = ss.getUserFromUserName(username);
+    return gson.toJson(user.getNotifications(ss));
 }
 
 @POST

@@ -127,7 +127,7 @@ public class User {
         return comments;
     }
 
-    public ArrayList<Notification> getNotifications() {
+    public ArrayList<Notification> getNotifications(SystemStorage ss) {
         //Here we assume that "get" means the user reads the notifications
         //So we can mark them as read
         //Only return notifications that are marked as unread
@@ -143,7 +143,16 @@ public class User {
             }
         }
 
-        return unreadNotifications;
+        try {
+            ss.addUserToSystem(this);
+            return unreadNotifications;
+        }
+
+        catch (IOException e) {
+            return null;
+        }
+
+        
     }
 
     //Get notifications without marking them as read

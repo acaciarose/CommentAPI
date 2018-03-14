@@ -40,33 +40,33 @@ public class CommentObjectTest {
 
     }
 
-    // @Test 
-    // public void testUpvoteDownvote() {
-    //     topLevelComment.upvote(ss);
-    //     assertEquals(topLevelComment.getUpvotes(), 1);
-    //     topLevelComment.downvote(ss);
-    //     assertEquals(topLevelComment.getUpvotes(), 0);
-    //     topLevelComment.downvote(ss);
-    //     assertEquals(topLevelComment.getUpvotes(), -1); 
-    //     topLevelComment.upvote(ss);
-    //     assertEquals(topLevelComment.getUpvotes(), 0); 
+    @Test 
+    public void testUpvoteDownvote() {
+        topLevelComment.upvote(ss);
+        assertEquals(topLevelComment.getUpvotes(), 1);
+        topLevelComment.downvote(ss);
+        assertEquals(topLevelComment.getUpvotes(), 0);
+        topLevelComment.downvote(ss);
+        assertEquals(topLevelComment.getUpvotes(), -1); 
+        topLevelComment.upvote(ss);
+        assertEquals(topLevelComment.getUpvotes(), 0); 
         
-    //     ss.populateDummyStorage();
-    // }
+        ss.populateDummyStorage();
+    }
 
-    // @Test
-    // public void testAddComment() {
+    @Test
+    public void testAddComment() {
 
-    //     Comment reply = new Comment("This is a reply!", "User2", false, ss.getGenerator());
-    //     topLevelComment.addReply(reply);
-    //     assertEquals(topLevelComment.getAllReplies().size(), 1);
-    //     assertEquals(topLevelComment.getAllReplies().get(0), reply);
+        Comment reply = new Comment("This is a reply!", "User2", false, ss.getGenerator());
+        topLevelComment.addReply(reply);
+        assertEquals(topLevelComment.getAllReplies().size(), 1);
+        assertEquals(topLevelComment.getAllReplies().get(0), reply);
 
-    //     //Make sure we reset number of comments afterwards (make sure tests are independent)
-    //     topLevelComment = new Comment("This is a comment on a photograph!", "User1", true, ss.getGenerator());
+        //Make sure we reset number of comments afterwards (make sure tests are independent)
+        topLevelComment = new Comment("This is a comment on a photograph!", "User1", true, ss.getGenerator());
 
-    //     ss.populateDummyStorage();
-    // }
+        ss.populateDummyStorage();
+    }
 
 
 

@@ -32,7 +32,7 @@ public class UserObjectTest {
         User user1 = ss.getUserFromUserName("User1");
         assertEquals(user1.getName(), "User1");
         assertEquals(user1.getComments().size(), 0);
-        assertEquals(user1.getNotifications().size(), 0);
+        assertEquals(user1.getNotifications(ss).size(), 0);
         assertFalse(user1.isAdmin());
 
 
@@ -126,7 +126,7 @@ public class UserObjectTest {
         User user1 = ss.getUserFromUserName("User1");
         User admin = ss.getUserFromUserName("Admin");
         Photograph photoOwnedByUser1 = ss.getPhotosFromUserName("User1").get(0);
-        assertEquals(user1.getNotifications().size(), 0);
+        assertEquals(user1.getNotifications(ss).size(), 0);
 
 
          admin.postComment("This is a comment on a photo", photoOwnedByUser1, ss);
@@ -135,10 +135,10 @@ public class UserObjectTest {
          assertEquals(admin.getComments().size(), 1);
 
          user1 = ss.getUserFromUserName("User1");
-         assertEquals(user1.getNotifications().size(), 1);
+         assertEquals(user1.getNotifications(ss).size(), 1);
 
          //Should now be read
-         assertEquals(user1.getNotifications().size(), 0);  
+         assertEquals(user1.getNotifications(ss).size(), 0);  
 
          ss.populateDummyStorage();
 
@@ -149,25 +149,25 @@ public class UserObjectTest {
         User user1 = ss.getUserFromUserName("User1");
         User admin = ss.getUserFromUserName("Admin");
         Photograph photoOwnedByUser1 = ss.getPhotosFromUserName("User1").get(0);
-        assertEquals(user1.getNotifications().size(), 0);
+        assertEquals(user1.getNotifications(ss).size(), 0);
 
 
          admin.postComment("This is a comment on a photo", photoOwnedByUser1, ss);
 
          user1 = ss.getUserFromUserName("User1");
-         assertEquals(user1.getNotifications().size(), 1);
+         assertEquals(user1.getNotifications(ss).size(), 1);
 
          //Should now be read
-         assertEquals(user1.getNotifications().size(), 0);  
+         assertEquals(user1.getNotifications(ss).size(), 0);  
 
          admin.postComment("This is a comment on a photo", photoOwnedByUser1, ss);
          admin.postComment("This is a comment on a photo", photoOwnedByUser1, ss);
 
 
-         assertEquals(user1.getNotifications().size(), 2);
+         assertEquals(user1.getNotifications(ss).size(), 2);
 
          //Should now be read
-         assertEquals(user1.getNotifications().size(), 0); 
+         assertEquals(user1.getNotifications(ss).size(), 0); 
 
 
 

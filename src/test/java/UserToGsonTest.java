@@ -31,7 +31,7 @@ public class UserToGsonTest {
 
         assertEquals(user.getComments(), parseduser.getComments());
         assertEquals(user.getName(), parseduser.getName());
-        assertEquals(user.getNotifications(), parseduser.getNotifications());
+        assertEquals(user.getNotifications(ss), parseduser.getNotifications(ss));
         assertEquals(user.isAdmin(), parseduser.isAdmin());
 
 
