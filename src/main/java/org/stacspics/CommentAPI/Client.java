@@ -3,6 +3,10 @@ package org.stacspics.CommentAPI;
 import java.util.Scanner;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
+import java.util.List;
 
 //IO Manager. Prompts for login and makes calls to the client.
 
@@ -50,13 +54,17 @@ public class Client {
         while (running){
 
             //split by spaces
-            String[] argumentComponents  = command.nextLine().split("\\s+");
+            //regex from https://stackoverflow.com/a/7804472
+            List<String> list = new ArrayList<String>();
+            Matcher m = Pattern.compile("([^\"]\\S*|\".+?\")\\s*").matcher(command.nextLine());
+            while (m.find())
+                list.add(m.group(1));
     
-            switch(argumentComponents[0].toLowerCase()) {
+            switch(list.get(0).toLowerCase()) {
 
             case "postcommentonphoto":
-                String commentText = argumentComponents[1];
-                int commentPhotoID = Integer.parseInt(argumentComponents[2]);
+                String commentText = list.get(1);
+                int commentPhotoID = Integer.parseInt(list.get(2));
 
                 path = "/users/" + name + "/comments/photos/" + commentPhotoID;
 
@@ -70,8 +78,8 @@ public class Client {
 
     
             case "postreplytocomment":
-                String replyText = argumentComponents[3];
-                int subjectCommentID = Integer.parseInt(argumentComponents[2]);              
+                String replyText = list.get(2);
+                int subjectCommentID = Integer.parseInt(list.get(1));              
                 
                 path = "/users/" + name + "/comments/replies/" + subjectCommentID;
 
@@ -86,7 +94,7 @@ public class Client {
 
     
             case "getcommentfromid":
-                String commentID = argumentComponents[1];
+                String commentID = list.get(1);
 
 
                 path = "/comments/" + commentID;
@@ -97,7 +105,7 @@ public class Client {
                 break;
 
             case "getrepliesfromcommentid":
-                String parentCommentID = argumentComponents[1];
+                String parentCommentID = list.get(1);
                 path = "/comments/" + parentCommentID + "/replies";
 
                 responsestring = client.sendGetRequestAndReturnServerResponse(path);
@@ -109,7 +117,7 @@ public class Client {
 
    
             case "getusercomments":
-                String username = argumentComponents[1];
+                String username = list.get(1);
 
                 path = "/users/" + username + "/comments";
 
@@ -119,7 +127,7 @@ public class Client {
                 break;
     
             case "getphotocomments":
-                int photoID = Integer.parseInt(argumentComponents[1]);
+                int photoID = Integer.parseInt(list.get(1));
 
                 path = "/photos/" + photoID + "/comments";
 
@@ -139,7 +147,7 @@ public class Client {
                 break;
 
             case "deletecomment":
-                int deleteCommentID = Integer.parseInt(argumentComponents[1]);
+                int deleteCommentID = Integer.parseInt(list.get(1));
 
                 path = "/comments/" + deleteCommentID + "/remove";
 
@@ -151,7 +159,7 @@ public class Client {
 
                 break;
             case "upvote":
-                int upvoteCommentID = Integer.parseInt(argumentComponents[1]);
+                int upvoteCommentID = Integer.parseInt(list.get(1));
 
                 path = "/comments/" + upvoteCommentID + "/upvote";
 
@@ -164,7 +172,7 @@ public class Client {
                 break;
 
             case "downvote":
-                int downvoteCommentID = Integer.parseInt(argumentComponents[1]);
+                int downvoteCommentID = Integer.parseInt(list.get(1));
 
                 path = "/comments/" + downvoteCommentID + "/downvote";
 
