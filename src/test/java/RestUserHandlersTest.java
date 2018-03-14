@@ -80,6 +80,26 @@ public class RestUserHandlersTest {
 
     }
 
+    @Test
+    //Should return the ID of the created comment
+    public void testPostUserReplyOnComment() throws IOException {
+        Response response = cc.sendPostTextRequestAndGetResponse("users/User1/comments/replies/1", "A reply to a comment");
+        assertEquals(response.getStatus(), 200);
+
+        assertEquals(response.readEntity(String.class), "3");
+        
+        ss = ss.readFromStorage("storage.json");
+        Comment created = ss.getCommentByID(3);
+        assertEquals(created.getText(), "A reply to a comment");
+
+        ss = new SystemStorage();
+        ss.populateDummyStorageWithComments();
+        //Write known/dummy values to storage
+        ss.writeToStorage("storage.json");
+
+
+    }
+
 
 
     @AfterClass

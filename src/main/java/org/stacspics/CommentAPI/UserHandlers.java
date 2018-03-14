@@ -54,8 +54,8 @@ public Response postReplyOnPhoto(@PathParam("commentername") String commenter, @
 @POST
 //This posts a reply to a comment, specified by CommentID
 @Consumes("text/plain")
-@Path("/{repliername}/comments/replies/{commentID}/{reply}")
-public Response postReplyOnComment(@PathParam("reply") String replytext, @PathParam("repliername") String replier, @PathParam("CommentID") int commentID, InputStream is) {
+@Path("/{repliername}/comments/replies/{commentID}")
+public Response postReplyOnComment(@PathParam("repliername") String replier, @PathParam("CommentID") int commentID, String data) {
     return Response.status(Response.Status.BAD_REQUEST).build();
 
 }
