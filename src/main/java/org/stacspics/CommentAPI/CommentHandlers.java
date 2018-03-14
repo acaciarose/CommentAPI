@@ -67,7 +67,11 @@ public Response deleteComment(@PathParam("commentID") int commentID, String data
 @Consumes("text/plain")
 @Path("/{commentID}/upvote")
 public Response upvoteComment(@PathParam("commentID") int commentID, String data) {
+    Comment comment = ss.getCommentByID(commentID);
 
+    if (comment.upvote(ss)) {
+        return Response.ok().entity("Successfully upvoted.").build();
+    }
     return Response.status(Response.Status.BAD_REQUEST).build();
 
 }
@@ -79,6 +83,10 @@ public Response upvoteComment(@PathParam("commentID") int commentID, String data
 @Path("/{commentID}/downvote")
 public Response downvoteComment(@PathParam("commentID") int commentID, String data) {
 
+    Comment comment = ss.getCommentByID(commentID);
+    if (comment.downvote(ss)) {
+        return Response.ok().entity("Successfully downvoted.").build();
+    }
     return Response.status(Response.Status.BAD_REQUEST).build();
 
     
