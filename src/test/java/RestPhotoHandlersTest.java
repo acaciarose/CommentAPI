@@ -20,7 +20,7 @@ import org.stacspics.CommentAPI.SystemStorage;
 
 
 //Tests REST server handlers for reading/making comments, etc
-public class RestCommentHandlersTest {
+public class RestPhotoHandlersTest {
     static CommentClient cc;
     static SystemStorage ss;
     static Server s;
@@ -42,7 +42,7 @@ public class RestCommentHandlersTest {
 
 
     @Test
-    public void testGetPhotos() throws IOException {
+    public void testGetPhotoComments() throws IOException {
         String response = cc.sendGetRequestAndReturnServerResponse("/photos/0/comments");
         Photograph photo = ss.getPhotoFromID(0);
         ArrayList<Comment> comments = photo.getComments();

@@ -24,7 +24,10 @@ SystemStorage ss = new SystemStorage().readFromStorage("storage.json");
 @Path("{photoID}/comments")
 @Produces("text/plain")
 public String getPhotosComments(@PathParam("photoID") int photoID) {
-    return "";
+    Photograph photo = ss.getPhotoFromID(photoID);
+    ArrayList<Comment> comments = photo.getComments();
+
+    return gson.toJson(comments);
 }
 
 
