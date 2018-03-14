@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="UserObjectTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2018-03-14T00:34:28" hostname="pc3-018-l.cs.st-andrews.ac.uk" time="0.379">
+<testsuite name="UserObjectTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2018-03-14T02:11:14" hostname="pc3-018-l.cs.st-andrews.ac.uk" time="0.368">
   <properties/>
   <testcase name="testNotificationAppearingWhenReplyToComment" classname="UserObjectTest" time="0.0"/>
   <testcase name="testNotificationAppearingWhenCommentOnPhoto" classname="UserObjectTest" time="0.0"/>
-  <testcase name="testAddCommentOnPhoto" classname="UserObjectTest" time="0.041"/>
+  <testcase name="testAddCommentOnPhoto" classname="UserObjectTest" time="0.039"/>
   <testcase name="testOriginalAdminUser" classname="UserObjectTest" time="0.0"/>
   <testcase name="testOriginalUsers" classname="UserObjectTest" time="0.0"/>
-  <testcase name="testAdminCanRemoveComment" classname="UserObjectTest" time="0.047"/>
-  <testcase name="testNotificationsAreRead" classname="UserObjectTest" time="0.039"/>
-  <testcase name="testAddReplyOnComment" classname="UserObjectTest" time="0.059"/>
-  <testcase name="testOnlyUnreadNotificationsAreReturned" classname="UserObjectTest" time="0.069"/>
-  <testcase name="testUpvote" classname="UserObjectTest" time="0.041"/>
-  <testcase name="testNonAdminCantRemoveComment" classname="UserObjectTest" time="0.036"/>
+  <testcase name="testAdminCanRemoveComment" classname="UserObjectTest" time="0.04"/>
+  <testcase name="testNotificationsAreRead" classname="UserObjectTest" time="0.04"/>
+  <testcase name="testAddReplyOnComment" classname="UserObjectTest" time="0.052"/>
+  <testcase name="testOnlyUnreadNotificationsAreReturned" classname="UserObjectTest" time="0.074"/>
+  <testcase name="testUpvote" classname="UserObjectTest" time="0.037"/>
+  <testcase name="testNonAdminCantRemoveComment" classname="UserObjectTest" time="0.035"/>
   <testcase name="testDownvote" classname="UserObjectTest" time="0.046"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

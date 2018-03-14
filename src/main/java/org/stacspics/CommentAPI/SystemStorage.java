@@ -188,7 +188,6 @@ public class SystemStorage {
     }
 
     public SystemStorage readFromStorage(String filename) {
-        System.out.println("hello im trying");
         try{
         File file = new File(filename);
         FileReader f = new FileReader(file);

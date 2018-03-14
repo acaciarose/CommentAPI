@@ -1,7 +1,9 @@
 
 import org.junit.BeforeClass;
 import org.junit.AfterClass;
+import org.junit.After;
 import static org.junit.Assert.*;
+import javax.ws.rs.core.Response;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,16 +50,42 @@ public class RestUserHandlersTest {
         ArrayList<Comment> returned = gson.fromJson(response, new TypeToken<List<Comment>>(){}.getType());
         ArrayList<Comment> comments = ss.getUserFromUserName("User1").getComments();
         assertEquals(returned.size(), comments.size());
+ 
         assertEquals(returned.get(0).getCommenter(), comments.get(0).getCommenter());
         assertEquals(returned.get(0).getText(), comments.get(0).getText());
         
-          
+        ss = new SystemStorage();
+        ss.populateDummyStorageWithComments();
+        //Write known/dummy values to storage
+        ss.writeToStorage("storage.json");
+    }
+
+    @Test
+    //Should return the ID of the created comment
+    public void testPostUserCommentOnPhoto() throws IOException {
+        Response response = cc.sendPostTextRequestAndGetResponse("users/User1/comments/photos/1", "A created comment");
+        assertEquals(response.getStatus(), 200);
+
+        assertEquals(response.readEntity(String.class), "2");
+        
+        ss = ss.readFromStorage("storage.json");
+        Comment created = ss.getCommentByID(2);
+        assertEquals(created.getText(), "A created comment");
+
+        ss = new SystemStorage();
+        ss.populateDummyStorageWithComments();
+        //Write known/dummy values to storage
+        ss.writeToStorage("storage.json");
+
+
     }
 
 
+
     @AfterClass
-    public static void tearDown() {
+    public static void tearDownClass() throws IOException {
         s.stopServer();
+
     }
 
  

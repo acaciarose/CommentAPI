@@ -3,6 +3,13 @@ package org.stacspics.CommentAPI;
 import java.util.List;
 import java.util.Map;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.client.Entity;
+
+
 import java.net.HttpURLConnection;
 import java.net.URLConnection;
 
@@ -63,42 +70,39 @@ public class CommentClient {
     }
 
 
-    //Test client, just to see if we can make a request/response
-    //modified from lecture slides
-    //Will be deleted once proper functionality is imlemented
-    public void makeSampleGETRequest() throws IOException {
+    public Response sendPostTextRequestAndGetResponse(String path, String message) {
+     
+        try {
 
-        //Manually set URL for now
-        URL url = new URL("http", "localhost", 8080, "/myapp/helloworld/de");
+            Client client = ClientBuilder.newClient();
+            WebTarget webTarget = client.target("http://localhost:8080/myapp/" + path);
+            Response response = webTarget
+                                .request("text/plain")
+                                .post(
+                                    Entity.entity(message,
+                                    "text/plain"));
 
-        System.out.println( "Connecting using URL : " + url.toString());
+                                    System.out.println("HELLO I AM HERE " + response.getStatus());
+                                
+            return response;
+    
+            
+    
 
-        final String protocol = url.getProtocol();
-        if (protocol.equalsIgnoreCase("http")) {
-        final URLConnection urlconn = url.openConnection();
-        if (urlconn instanceof HttpURLConnection) {
-        final HttpURLConnection conn = (HttpURLConnection) urlconn;
-        conn.connect();
-        System.err.println(conn.getResponseCode() + ": " + conn.getResponseMessage());
-        BufferedReader in = new BufferedReader(
-		        new InputStreamReader(conn.getInputStream()));
-		String inputLine;
-		StringBuffer response = new StringBuffer();
 
-		while ((inputLine = in.readLine()) != null) {
-			response.append(inputLine);
-		}
-        in.close();
-        
-        System.out.println(response.toString());
+    
 
-        } else {
-        throw new RuntimeException("Got URLConnection of type " + urlconn.getClass());
-        }
-        } else {
-        throw new IllegalArgumentException("URL needs to use the HTTP or HTTPS protocols.");
-        }
-        }
+        }   catch (Exception e) {
+
+            e.printStackTrace();
+            return null;
+    
+          }
+
+    }
+
+
+
 
 
         

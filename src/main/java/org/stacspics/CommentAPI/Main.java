@@ -12,18 +12,7 @@ public class Main {
                 + "%sapplication.wadl\nHit enter to stop it...", s.BASE_URI));
 
         
-        CommentClient c = new CommentClient();
 
-        try {
-            c.makeSampleGETRequest();
-
-        }
-        catch (IOException e){
-            e.printStackTrace();
-            s.stopServer();
-            
-
-        }
             
 
     }

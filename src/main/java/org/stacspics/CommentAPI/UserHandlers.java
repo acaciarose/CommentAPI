@@ -31,9 +31,22 @@ public String getUsersComments(@PathParam("username") String username) {
 
 @POST
 @Consumes("text/plain")
+@Produces("text/plain")
 //This posts a comment to a Photo, specified by photoID
 @Path("/{commentername}/comments/photos/{photoid}")
-public Response postReplyOnPhoto(@PathParam("commentername") String replier, @PathParam("photoID") int photoID, InputStream is) {
+public Response postReplyOnPhoto(@PathParam("commentername") String commenter, @PathParam("photoID") int photoID, String data) {
+    User user = ss.getUserFromUserName(commenter);
+    Photograph photo = ss.getPhotoFromID(photoID);
+
+    //Size of this = index of next created comment
+    int current = ss.getComments().size();
+
+    if (user.postComment(data, photo, ss)) {
+        
+
+        return Response.ok().entity(current).build();
+    }
+
     return Response.status(Response.Status.BAD_REQUEST).build();
 
 }
@@ -41,8 +54,8 @@ public Response postReplyOnPhoto(@PathParam("commentername") String replier, @Pa
 @POST
 //This posts a reply to a comment, specified by CommentID
 @Consumes("text/plain")
-@Path("/{repliername}/comments/{commentID}/replies")
-public Response postReplyOnComment(@PathParam("repliername") String replier, @PathParam("CommentID") int commentID, InputStream is) {
+@Path("/{repliername}/comments/replies/{commentID}/{reply}")
+public Response postReplyOnComment(@PathParam("reply") String replytext, @PathParam("repliername") String replier, @PathParam("CommentID") int commentID, InputStream is) {
     return Response.status(Response.Status.BAD_REQUEST).build();
 
 }
