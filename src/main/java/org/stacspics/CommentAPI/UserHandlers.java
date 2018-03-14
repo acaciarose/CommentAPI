@@ -16,11 +16,17 @@ import java.util.ArrayList;
 @Path("/users")
 //REST functions for handling user-related requests 
 public class UserHandlers {
+Gson gson = new Gson();
+SystemStorage ss = new SystemStorage().readFromStorage("storage.json");
+
+
 @GET
-@Path("/users/{username}/comments")
+@Path("/{username}/comments")
 @Produces("text/plain")
 public String getUsersComments(@PathParam("username") String username) {
- return "";
+    User user = ss.getUserFromUserName(username);
+    ArrayList<Comment> allUserComments = user.getComments();
+    return gson.toJson(allUserComments);
 }
 
 @POST
