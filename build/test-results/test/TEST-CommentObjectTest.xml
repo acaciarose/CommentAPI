@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CommentObjectTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-03-14T03:46:07" hostname="pc3-018-l.cs.st-andrews.ac.uk" time="0.083">
+<testsuite name="CommentObjectTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-03-14T03:47:06" hostname="pc3-018-l.cs.st-andrews.ac.uk" time="0.078">
   <properties/>
-  <testcase name="testUpvoteDownvote" classname="CommentObjectTest" time="0.037"/>
-  <testcase name="testCommentObjectCreation" classname="CommentObjectTest" time="0.024"/>
-  <testcase name="testAddComment" classname="CommentObjectTest" time="0.022"/>
+  <testcase name="testUpvoteDownvote" classname="CommentObjectTest" time="0.036"/>
+  <testcase name="testCommentObjectCreation" classname="CommentObjectTest" time="0.021"/>
+  <testcase name="testAddComment" classname="CommentObjectTest" time="0.02"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

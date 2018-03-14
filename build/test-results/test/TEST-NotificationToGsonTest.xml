@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="NotificationToGsonTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-03-14T03:46:04" hostname="pc3-018-l.cs.st-andrews.ac.uk" time="0.079">
+<testsuite name="NotificationToGsonTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-03-14T03:47:03" hostname="pc3-018-l.cs.st-andrews.ac.uk" time="0.092">
   <properties/>
-  <testcase name="testNotificationToGsonFunction" classname="NotificationToGsonTest" time="0.079"/>
+  <testcase name="testNotificationToGsonFunction" classname="NotificationToGsonTest" time="0.092"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

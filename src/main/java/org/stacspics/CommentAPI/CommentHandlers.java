@@ -47,7 +47,16 @@ return gson.toJson(replies);
 @Consumes("text/plain")
 @Produces("text/plain")
 public Response deleteComment(@PathParam("commentID") int commentID, String data) {
-    return Response.status(Response.Status.BAD_REQUEST).build();
+
+    Comment comment = ss.getCommentByID(commentID);
+    User deleter = ss.getUserFromUserName(data);
+    if (comment.remove(deleter, ss)) {
+        return Response.ok().entity("Successfully deleted.").build();
+    }
+
+    else {
+        return Response.status(Response.Status.BAD_REQUEST).build();
+    }
 
 
 

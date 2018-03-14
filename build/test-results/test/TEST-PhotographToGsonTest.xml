@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="PhotographToGsonTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-03-14T03:46:07" hostname="pc3-018-l.cs.st-andrews.ac.uk" time="0.001">
+<testsuite name="PhotographToGsonTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-03-14T03:47:07" hostname="pc3-018-l.cs.st-andrews.ac.uk" time="0.0">
   <properties/>
-  <testcase name="testPhotographToGsonFunction" classname="PhotographToGsonTest" time="0.001"/>
+  <testcase name="testPhotographToGsonFunction" classname="PhotographToGsonTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
