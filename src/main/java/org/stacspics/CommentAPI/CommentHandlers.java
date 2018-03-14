@@ -7,6 +7,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.POST;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.core.Response;
+import java.lang.Integer;
 
 import com.google.gson.*;
 
@@ -19,36 +20,37 @@ public class CommentHandlers {
 SystemStorage ss = new SystemStorage().readFromStorage("storage.json");
 Gson gson = new Gson();
 
+@GET
+@Path("{commentID}/replies")
+@Produces("text/plain")
+public String getRepliesToComment(@PathParam("commentID") String commentID) {
+
+Comment c = ss.getCommentByID(Integer.parseInt(commentID));
+ArrayList<Comment> replies = c.getAllReplies();
+
+return gson.toJson(replies);
+}
 
 @GET
-@Path("/{commentID}")
+@Path("{commentID}")
 @Produces("text/plain")
-public String getCommentFromID(@PathParam("CommentID") int commentID) {
-    Comment c = ss.getCommentByID(commentID);
+public String getCommentFromID(@PathParam("commentID") String commentID) {
+
+    Comment c = ss.getCommentByID(Integer.parseInt(commentID));
 
     //Return JSON string of comment
     return c.turnToJsonString();
 
 }
 
-@GET
-@Path("/{commentID}/replies")
-@Produces("text/plain")
-public String getRepliesToComment(@PathParam("CommentID") int commentID) {
-//Needs to be updated, but returns text for now
-Comment c = ss.getCommentByID(commentID);
-ArrayList<Comment> replies = c.getAllReplies();
 
-return gson.toJson(replies);
-}
 
 @POST
-@Path("/{commentID}/remove")
 @Consumes("text/plain")
 @Produces("text/plain")
-public Response deleteComment(@PathParam("commentID") int commentID, String data) {
-
-    Comment comment = ss.getCommentByID(commentID);
+@Path("/{commentID}/remove")
+public Response deleteComment(@PathParam("commentID") String commentID, String data) {
+    Comment comment = ss.getCommentByID(Integer.parseInt(commentID));
     User deleter = ss.getUserFromUserName(data);
     if (comment.remove(deleter, ss)) {
         return Response.ok().entity("Successfully deleted.").build();
@@ -66,8 +68,8 @@ public Response deleteComment(@PathParam("commentID") int commentID, String data
 @Produces("text/plain")
 @Consumes("text/plain")
 @Path("/{commentID}/upvote")
-public Response upvoteComment(@PathParam("commentID") int commentID, String data) {
-    Comment comment = ss.getCommentByID(commentID);
+public Response upvoteComment(@PathParam("commentID") String commentID, String data) {
+    Comment comment = ss.getCommentByID(Integer.parseInt(commentID));
 
     if (comment.upvote(ss)) {
         return Response.ok().entity("Successfully upvoted.").build();
@@ -81,9 +83,9 @@ public Response upvoteComment(@PathParam("commentID") int commentID, String data
 @Produces("text/plain")
 @Consumes("text/plain")
 @Path("/{commentID}/downvote")
-public Response downvoteComment(@PathParam("commentID") int commentID, String data) {
+public Response downvoteComment(@PathParam("commentID") String commentID, String data) {
 
-    Comment comment = ss.getCommentByID(commentID);
+    Comment comment = ss.getCommentByID(Integer.parseInt(commentID));
     if (comment.downvote(ss)) {
         return Response.ok().entity("Successfully downvoted.").build();
     }

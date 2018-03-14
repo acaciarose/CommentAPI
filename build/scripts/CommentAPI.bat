@@ -66,7 +66,7 @@ set CMD_LINE_ARGS=%*
 set CLASSPATH=%APP_HOME%\lib\CommentAPI.jar;%APP_HOME%\lib\jersey-container-grizzly2-http-2.26.jar;%APP_HOME%\lib\jersey-server-2.26.jar;%APP_HOME%\lib\jersey-grizzly-connector-2.26.jar;%APP_HOME%\lib\jersey-client-2.26.jar;%APP_HOME%\lib\jersey-hk2-2.26.jar;%APP_HOME%\lib\jersey-media-jaxb-2.26.jar;%APP_HOME%\lib\jersey-common-2.26.jar;%APP_HOME%\lib\gson-2.4.jar;%APP_HOME%\lib\grizzly-http-client-1.13.jar;%APP_HOME%\lib\slf4j-api-1.7.21.jar;%APP_HOME%\lib\javax.ws.rs-api-2.1.jar;%APP_HOME%\lib\hk2-locator-2.5.0-b42.jar;%APP_HOME%\lib\hk2-api-2.5.0-b42.jar;%APP_HOME%\lib\hk2-utils-2.5.0-b42.jar;%APP_HOME%\lib\javax.annotation-api-1.2.jar;%APP_HOME%\lib\javax.inject-2.5.0-b42.jar;%APP_HOME%\lib\validation-api-1.1.0.Final.jar;%APP_HOME%\lib\osgi-resource-locator-1.0.1.jar;%APP_HOME%\lib\grizzly-http-server-2.4.0.jar;%APP_HOME%\lib\grizzly-websockets-2.4.0.jar;%APP_HOME%\lib\connection-pool-2.4.0.jar;%APP_HOME%\lib\aopalliance-repackaged-2.5.0-b42.jar;%APP_HOME%\lib\javassist-3.22.0-CR2.jar;%APP_HOME%\lib\grizzly-http-2.4.0.jar;%APP_HOME%\lib\javax.inject-1.jar;%APP_HOME%\lib\grizzly-framework-2.4.0.jar
 
 @rem Execute CommentAPI
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %COMMENT_API_OPTS%  -classpath "%CLASSPATH%" org.stacspics.CommentAPI.Main %CMD_LINE_ARGS%
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %COMMENT_API_OPTS%  -classpath "%CLASSPATH%" org.stacspics.CommentAPI.Server %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell

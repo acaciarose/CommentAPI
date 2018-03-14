@@ -25,7 +25,10 @@ SystemStorage ss = new SystemStorage().readFromStorage("storage.json");
 @Produces("text/plain")
 public String getUsersComments(@PathParam("username") String username) {
     User user = ss.getUserFromUserName(username);
+    System.out.println(user);
+    System.out.println(user.getName());
     ArrayList<Comment> allUserComments = user.getComments();
+    System.out.println(allUserComments.size());
     return gson.toJson(allUserComments);
 }
 
@@ -51,8 +54,7 @@ public Response postReplyOnPhoto(@PathParam("commentername") String commenter, @
 
     if (user.postComment(data, photo, ss)) {
         
-
-        return Response.ok().entity(current).build();
+        return Response.ok().entity(Integer.toString(current)).build();
     }
 
     return Response.status(Response.Status.BAD_REQUEST).build();
@@ -64,8 +66,11 @@ public Response postReplyOnPhoto(@PathParam("commentername") String commenter, @
 @Consumes("text/plain")
 @Path("/{repliername}/comments/replies/{commentID}")
 public Response postReplyOnComment(@PathParam("repliername") String replier, @PathParam("CommentID") int commentID, String data) {
+
     User user = ss.getUserFromUserName(replier);
     Comment comment = ss.getCommentByID(commentID);
+
+
 
     //Size of this = index of next created comment
     int current = ss.getComments().size();

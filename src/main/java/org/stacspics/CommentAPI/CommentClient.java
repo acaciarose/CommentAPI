@@ -75,7 +75,7 @@ public class CommentClient {
         try {
 
             Client client = ClientBuilder.newClient();
-            WebTarget webTarget = client.target("http://localhost:8080/myapp/" + path);
+            WebTarget webTarget = client.target("http://localhost:8080/myapp" + path);
             Response response = webTarget
                                 .request("text/plain")
                                 .post(

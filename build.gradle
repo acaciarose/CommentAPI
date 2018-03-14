@@ -7,9 +7,8 @@
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
-apply plugin: 'jacoco'
 apply plugin: 'application'
-mainClassName = "org.stacspics.CommentAPI.Main"
+mainClassName = "org.stacspics.CommentAPI.Server"
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -21,13 +20,22 @@ repositories {
 ext.jerseyVersion = '2.26'
 
 
-jacoco {
-    toolVersion = "0.8.0"
-    reportsDir = file("$buildDir/JacocoTestReports")
-}
 
 test{
 testLogging.showStandardStreams = true
+}
+
+
+
+task(runServer, dependsOn: 'classes', type: JavaExec) {
+    main = "org.stacspics.CommentAPI.Server"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(runClient, dependsOn: 'classes', type: JavaExec) {
+    standardInput = System.in
+    main = "org.stacspics.CommentAPI.Client"
+    classpath = sourceSets.main.runtimeClasspath
 }
 
 // In this section you declare the dependencies for your production and test code
@@ -42,6 +50,17 @@ dependencies {
       
     // The production code uses the SLF4J logging API at compile time
     compile 'org.slf4j:slf4j-api:1.7.21'
+
+    runtime 'org.glassfish.jersey.core:jersey-server:'+jerseyVersion
+    runtime 'org.glassfish.jersey.core:jersey-client:'+jerseyVersion
+    runtime 'org.glassfish.jersey.core:jersey-common:'+jerseyVersion
+    runtime 'org.glassfish.jersey.inject:jersey-hk2:'+jerseyVersion
+    runtime 'org.glassfish.jersey.containers:jersey-container-grizzly2-http:'+jerseyVersion
+    runtime 'org.glassfish.jersey.connectors:jersey-grizzly-connector:'+jerseyVersion
+    runtime 'com.google.code.gson:gson:2.4'
+      
+    // The production code uses the SLF4J logging API at compile time
+    runtime 'org.slf4j:slf4j-api:1.7.21'
 
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the

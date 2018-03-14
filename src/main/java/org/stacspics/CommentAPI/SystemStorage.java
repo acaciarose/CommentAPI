@@ -22,13 +22,13 @@ public class SystemStorage {
     private HashMap<String, User> users;
     private HashMap<String, ArrayList<Photograph>> photographs;
     private IDGenerator IDgen;
-    private HashMap<Integer, Comment> comments;
+    private HashMap<String, Comment> comments;
 
     public SystemStorage() {
         users = new HashMap<String, User>();
         photographs = new HashMap<String, ArrayList<Photograph>>();
         IDgen = new IDGenerator();
-        comments = new HashMap<Integer, Comment>();
+        comments = new HashMap<String, Comment>();
 
     }
 
@@ -86,17 +86,18 @@ public class SystemStorage {
         return photographs;
     }
 
-    public HashMap<Integer, Comment> getComments() {
+    public HashMap<String, Comment> getComments() {
         return comments;
     }
 
     public void addCommentToSystem(Comment comment) throws IOException {
-        comments.put(comment.getID(), comment);
+        
+        comments.put(Integer.toString(comment.getID()), comment);
         writeToStorage("storage.json");
     }
 
     public Comment getCommentByID(int ID) {
-        return comments.get(ID);
+                return comments.get(Integer.toString(ID));
     }
 
     //Populate system storage with dummy users and photos

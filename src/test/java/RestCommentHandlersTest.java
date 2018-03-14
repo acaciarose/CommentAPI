@@ -65,7 +65,7 @@ public class RestCommentHandlersTest {
 
     @Test
     public void testDeleteComment() throws IOException {
-        Response response = cc.sendPostTextRequestAndGetResponse("comments/0/remove", "Admin");
+        Response response = cc.sendPostTextRequestAndGetResponse("/comments/0/remove", "Admin");
         assertEquals(response.getStatus(), 200);
 
         ss = ss.readFromStorage("storage.json");
@@ -83,7 +83,7 @@ public class RestCommentHandlersTest {
 
     @Test
     public void testUpvoteComment() throws IOException {
-        Response response = cc.sendPostTextRequestAndGetResponse("comments/0/upvote", "");
+        Response response = cc.sendPostTextRequestAndGetResponse("/comments/0/upvote", "");
 
         assertEquals(response.getStatus(), 200);
 
@@ -103,7 +103,7 @@ public class RestCommentHandlersTest {
 
     @Test
     public void testDownvoteComment() throws IOException {
-        Response response = cc.sendPostTextRequestAndGetResponse("comments/0/downvote", "");
+        Response response = cc.sendPostTextRequestAndGetResponse("/comments/0/downvote", "");
 
         assertEquals(response.getStatus(), 200);
 

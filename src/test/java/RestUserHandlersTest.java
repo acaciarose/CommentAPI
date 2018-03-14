@@ -60,7 +60,7 @@ public class RestUserHandlersTest {
     @Test
     //Should return the ID of the created comment
     public void testPostUserCommentOnPhoto() throws IOException {
-        Response response = cc.sendPostTextRequestAndGetResponse("users/User1/comments/photos/1", "A created comment");
+        Response response = cc.sendPostTextRequestAndGetResponse("/users/User1/comments/photos/0", "A created comment");
         assertEquals(response.getStatus(), 200);
 
         assertEquals(response.readEntity(String.class), "2");
@@ -80,7 +80,7 @@ public class RestUserHandlersTest {
     @Test
     //Should return the ID of the created comment
     public void testPostUserReplyOnComment() throws IOException {
-        Response response = cc.sendPostTextRequestAndGetResponse("users/User1/comments/replies/1", "A reply to a comment");
+        Response response = cc.sendPostTextRequestAndGetResponse("/users/User1/comments/replies/1", "A reply to a comment");
         assertEquals(response.getStatus(), 200);
 
         assertEquals(response.readEntity(String.class), "2");

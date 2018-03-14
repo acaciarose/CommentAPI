@@ -37,11 +37,17 @@ public class Server {
         server = GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
 
         System.out.println(String.format("Jersey app started with WADL available at "
-        + "%sapplication.wadl\nHit enter to stop it...", BASE_URI));
+        + "%sapplication.wadl.", BASE_URI));
     }
 
     public void stopServer() {
         server.stop();
+    }
+
+    public static void main(String[] args) {
+        Server server = new Server();
+        server.startServer();
+
     }
 
 
