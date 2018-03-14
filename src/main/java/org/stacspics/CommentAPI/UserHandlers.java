@@ -56,6 +56,18 @@ public Response postReplyOnPhoto(@PathParam("commentername") String commenter, @
 @Consumes("text/plain")
 @Path("/{repliername}/comments/replies/{commentID}")
 public Response postReplyOnComment(@PathParam("repliername") String replier, @PathParam("CommentID") int commentID, String data) {
+    User user = ss.getUserFromUserName(replier);
+    Comment comment = ss.getCommentByID(commentID);
+
+    //Size of this = index of next created comment
+    int current = ss.getComments().size();
+
+    if (user.postComment(data, comment, ss)) {
+        
+
+        return Response.ok().entity(current).build();
+    }
+
     return Response.status(Response.Status.BAD_REQUEST).build();
 
 }

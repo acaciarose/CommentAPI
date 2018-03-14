@@ -86,10 +86,10 @@ public class RestUserHandlersTest {
         Response response = cc.sendPostTextRequestAndGetResponse("users/User1/comments/replies/1", "A reply to a comment");
         assertEquals(response.getStatus(), 200);
 
-        assertEquals(response.readEntity(String.class), "3");
+        assertEquals(response.readEntity(String.class), "2");
         
         ss = ss.readFromStorage("storage.json");
-        Comment created = ss.getCommentByID(3);
+        Comment created = ss.getCommentByID(2);
         assertEquals(created.getText(), "A reply to a comment");
 
         ss = new SystemStorage();
