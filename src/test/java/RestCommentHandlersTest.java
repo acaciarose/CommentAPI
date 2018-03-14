@@ -74,7 +74,51 @@ public class RestCommentHandlersTest {
 
         assertEquals(deleted.getText(), "This comment has been removed by an administrator.");
 
+        ss.populateDummyStorageWithComments();
+     //Write known/dummy values to storage
+     ss.writeToStorage("storage.json");
+     //Read back from storage (just in case)
+     ss.readFromStorage("storage.json");
+    }
 
+    @Test
+    public void testUpvoteComment() throws IOException {
+        Response response = cc.sendPostTextRequestAndGetResponse("comments/0/upvote", "");
+
+        assertEquals(response.getStatus(), 200);
+
+        ss = ss.readFromStorage("storage.json");
+
+        Comment upvoted = ss.getCommentByID(0);
+
+        //In dummy data, this comment already starts with -1 upvotes
+        assertEquals(upvoted.getUpvotes(), 0);
+
+        ss.populateDummyStorageWithComments();
+     //Write known/dummy values to storage
+     ss.writeToStorage("storage.json");
+     //Read back from storage (just in case)
+     ss.readFromStorage("storage.json");
+    }
+
+    @Test
+    public void testDownvoteComment() throws IOException {
+        Response response = cc.sendPostTextRequestAndGetResponse("comments/0/downvote", "");
+
+        assertEquals(response.getStatus(), 200);
+
+        ss = ss.readFromStorage("storage.json");
+
+        Comment downvoted = ss.getCommentByID(0);
+
+        //In dummy data, this comment already starts with -1 upvotes
+        assertEquals(downvoted.getUpvotes(), -2);
+        
+        ss.populateDummyStorageWithComments();
+     //Write known/dummy values to storage
+     ss.writeToStorage("storage.json");
+     //Read back from storage (just in case)
+     ss.readFromStorage("storage.json");
     }
 
 

@@ -62,6 +62,29 @@ public Response deleteComment(@PathParam("commentID") int commentID, String data
 
 }
 
+@POST
+@Produces("text/plain")
+@Consumes("text/plain")
+@Path("/{commentID}/upvote")
+public Response upvoteComment(@PathParam("commentID") int commentID, String data) {
+
+    return Response.status(Response.Status.BAD_REQUEST).build();
+
+}
+
+
+@POST
+@Produces("text/plain")
+@Consumes("text/plain")
+@Path("/{commentID}/downvote")
+public Response downvoteComment(@PathParam("commentID") int commentID, String data) {
+
+    return Response.status(Response.Status.BAD_REQUEST).build();
+
+    
+    
+}
+
 
 
 }
