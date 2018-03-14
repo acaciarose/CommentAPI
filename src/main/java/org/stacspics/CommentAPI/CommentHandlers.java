@@ -5,12 +5,16 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Path;
 
+import com.google.gson.*;
+
+
 import java.util.ArrayList;
 
 //REST handlers for getting/making/altering comments
 @Path("/comments")
 public class CommentHandlers {
 SystemStorage ss = new SystemStorage().readFromStorage("storage.json");
+Gson gson = new Gson();
 
 
 @GET
@@ -18,7 +22,6 @@ SystemStorage ss = new SystemStorage().readFromStorage("storage.json");
 @Produces("text/plain")
 public String getCommentFromID(@PathParam("CommentID") int commentID) {
     Comment c = ss.getCommentByID(commentID);
-    System.out.println(c.getCommenter());
 
     //Return JSON string of comment
     return c.turnToJsonString();
@@ -26,10 +29,15 @@ public String getCommentFromID(@PathParam("CommentID") int commentID) {
 }
 
 @GET
-@Path("/comments/{commentID}/replies")
+@Path("/{commentID}/replies")
 @Produces("text/plain")
+
 public String getRepliesToComment(@PathParam("CommentID") int commentID) {
-return "";
+//Needs to be updated, but returns text for now
+Comment c = ss.getCommentByID(commentID);
+ArrayList<Comment> replies = c.getAllReplies();
+
+return gson.toJson(replies);
 }
 
 }
