@@ -9,7 +9,7 @@ import java.io.IOException;
 public class User {
 
     private String username;
-    public ArrayList<Notification> notifications;
+    private ArrayList<Notification> notifications;
     private ArrayList<Comment> comments;
     private boolean isAdmin;
 
@@ -47,11 +47,10 @@ public class User {
 
 
 
-        // //Notify other user (refactor into separate method later)
-         User otherUser = ss.getUserFromUserName(photo.getUser());
-         String notificationText = "User" + username + "commented on your photo : " + "commenttext"; 
-         Notification n = new Notification(notificationText, comment);
-         otherUser = notify(otherUser, n);
+        //Notify other user 
+        User otherUser = ss.getUserFromUserName(photo.getUser());
+        handleNotification(otherUser, username, commenttext, comment);
+
 
 
          try {
@@ -94,13 +93,10 @@ public class User {
         //Add reply on other user's comment
         comment.addReply(reply);
 
-
-
-        
-        // //Notify other user (refactor into separate method later)
+   
+        //Notify other user
         User otherUser = ss.getUserFromUserName(comment.getCommenter());
-        Notification n = new Notification("User" + username + "replied to your comment : "+ replytext, reply);
-        otherUser = notify(otherUser, n);
+        handleNotification(otherUser, username, replytext, reply);
 
         try {
         //Write subject comment back to storage
@@ -155,21 +151,16 @@ public class User {
         
     }
 
-    //Get notifications without marking them as read
-    //Mostly used for debugging purposes, will be removed 
-    private ArrayList<Notification> getNotificationsSilently() {
-        return notifications;
+    private void addToNotifications(Notification n) {
+        notifications.add(n);
     }
 
 
-    public User notify(User userToBeNotified, Notification n) {
+    private void handleNotification(User otherUser, String userName, String commenttext, Comment comment) {
         
-        userToBeNotified.notifications.add(n);
-        
-
-        return userToBeNotified;
-
-
+        String notificationText = "User" + userName + "commented on something you posted : " + commenttext; 
+        Notification n = new Notification(notificationText, comment);
+        otherUser.addToNotifications(n);
     }
 
     public String turnToJsonString() {

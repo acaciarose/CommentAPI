@@ -199,13 +199,13 @@ public class Client {
 
     }
 
-    private prettyPrintResponse(Response response) {
+    private void prettyPrintResponse(Response response) {
         System.out.println("Response code: " + response.getStatus());
 
         System.out.println(response.readEntity(String.class));
     }
 
-    private printJSONResponse(String response) {
+    private void printJSONResponse(String response) {
         System.out.println("Server response :");
         System.out.print(response);
 
