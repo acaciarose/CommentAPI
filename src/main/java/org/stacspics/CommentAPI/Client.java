@@ -58,19 +58,19 @@ public class Client {
 
             //Split by spaces, except when in speech marks!
             //regex from https://stackoverflow.com/a/7804472
-            List<String> list = new ArrayList<String>();
+            List<String> parametersList = new ArrayList<String>();
             Matcher m = Pattern.compile("([^\"]\\S*|\".+?\")\\s*").matcher(command.nextLine());
             while (m.find())
-                list.add(m.group(1));
+                parametersList.add(m.group(1));
     
             
-            String firstPartOfCommand = list.get(0).toLowerCase();
+            String firstPartOfCommand = parametersList.get(0).toLowerCase();
             switch(firstPartOfCommand) {
             //Names of below cases should be fairly self explanatory
 
             case "postcommentonphoto":
-                String commentText = list.get(1);
-                int commentPhotoID = Integer.parseInt(list.get(2));
+                String commentText = parametersList.get(1);
+                int commentPhotoID = Integer.parseInt(parametersList.get(2));
 
                 path = "/users/" + name + "/comments/photos/" + commentPhotoID;
 
@@ -83,62 +83,60 @@ public class Client {
 
     
             case "postreplytocomment":
-                String replyText = list.get(2);
-                int subjectCommentID = Integer.parseInt(list.get(1));              
+                String replyText = parametersList.get(2);
+                int subjectCommentID = Integer.parseInt(parametersList.get(1));              
                 
                 path = "/users/" + name + "/comments/replies/" + subjectCommentID;
 
                 response = client.sendPostTextRequestAndGetResponse(path, replyText);
 
-                System.out.println("Response code: " + response.getStatus());
-
-                System.out.println("Created comment id: " + response.readEntity(String.class));
+                prettyPrintResponse(response);
 
                 break;
     
 
     
             case "getcommentfromid":
-                String commentID = list.get(1);
-
+                String commentID = parametersList.get(1);
 
                 path = "/comments/" + commentID;
 
                 responsestring = client.sendGetRequestAndReturnServerResponse(path);
 
-                System.out.print(responsestring);
+                printJSONResponse(responsestring);
                 break;
 
             case "getrepliesfromcommentid":
-                String parentCommentID = list.get(1);
+                String parentCommentID = parametersList.get(1);
                 path = "/comments/" + parentCommentID + "/replies";
 
                 responsestring = client.sendGetRequestAndReturnServerResponse(path);
 
-                System.out.print(responsestring);
+                printJSONResponse(responsestring);
 
                 break;
 
 
    
             case "getusercomments":
-                String username = list.get(1);
+                String username = parametersList.get(1);
 
                 path = "/users/" + username + "/comments";
 
                 responsestring = client.sendGetRequestAndReturnServerResponse(path);
 
-                System.out.print(responsestring);
+                printJSONResponse(responsestring);
+
                 break;
     
             case "getphotocomments":
-                int photoID = Integer.parseInt(list.get(1));
+                int photoID = Integer.parseInt(parametersList.get(1));
 
                 path = "/photos/" + photoID + "/comments";
 
                 responsestring = client.sendGetRequestAndReturnServerResponse(path);
 
-                System.out.print(responsestring);
+                printJSONResponse(responsestring);
 
                 break;
     
@@ -147,45 +145,42 @@ public class Client {
                 path = "/users/" + name + "/notifications";
                 responsestring = client.sendGetRequestAndReturnServerResponse(path);
 
-                System.out.print(responsestring);
+                printJSONResponse(responsestring);
                                
                 break;
 
             case "deletecomment":
-                int deleteCommentID = Integer.parseInt(list.get(1));
+                int deleteCommentID = Integer.parseInt(parametersList.get(1));
 
                 path = "/comments/" + deleteCommentID + "/remove";
 
                 response = client.sendPostTextRequestAndGetResponse(path, name);
 
-                System.out.println("Response code: " + response.getStatus());
-
-                System.out.println(response.readEntity(String.class));
+                prettyPrintResponse(response);
 
                 break;
             case "upvote":
-                int upvoteCommentID = Integer.parseInt(list.get(1));
+                int upvoteCommentID = Integer.parseInt(parametersList.get(1));
 
                 path = "/comments/" + upvoteCommentID + "/upvote";
 
                 response = client.sendPostTextRequestAndGetResponse(path, "");
 
-                System.out.println("Response code: " + response.getStatus());
+                prettyPrintResponse(response);
 
-                System.out.println(response.readEntity(String.class));
 
                 break;
 
             case "downvote":
-                int downvoteCommentID = Integer.parseInt(list.get(1));
+                int downvoteCommentID = Integer.parseInt(parametersList.get(1));
 
                 path = "/comments/" + downvoteCommentID + "/downvote";
 
                 response = client.sendPostTextRequestAndGetResponse(path, "");
 
-                System.out.println("Response code: " + response.getStatus());
+                prettyPrintResponse(response);
 
-                System.out.println(response.readEntity(String.class));
+ 
 
                 break;
 
@@ -201,6 +196,18 @@ public class Client {
             }
         }
         command.close();
+
+    }
+
+    private prettyPrintResponse(Response response) {
+        System.out.println("Response code: " + response.getStatus());
+
+        System.out.println(response.readEntity(String.class));
+    }
+
+    private printJSONResponse(String response) {
+        System.out.println("Server response :");
+        System.out.print(response);
 
     }
 
