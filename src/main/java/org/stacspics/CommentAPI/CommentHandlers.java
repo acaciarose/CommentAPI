@@ -4,6 +4,9 @@ import javax.ws.rs.GET;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Path;
+import javax.ws.rs.POST;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.core.Response;
 
 import com.google.gson.*;
 
@@ -31,7 +34,6 @@ public String getCommentFromID(@PathParam("CommentID") int commentID) {
 @GET
 @Path("/{commentID}/replies")
 @Produces("text/plain")
-
 public String getRepliesToComment(@PathParam("CommentID") int commentID) {
 //Needs to be updated, but returns text for now
 Comment c = ss.getCommentByID(commentID);
@@ -39,5 +41,18 @@ ArrayList<Comment> replies = c.getAllReplies();
 
 return gson.toJson(replies);
 }
+
+@POST
+@Path("/{commentID}/remove")
+@Consumes("text/plain")
+@Produces("text/plain")
+public Response deleteComment(@PathParam("commentID") int commentID, String data) {
+    return Response.status(Response.Status.BAD_REQUEST).build();
+
+
+
+}
+
+
 
 }

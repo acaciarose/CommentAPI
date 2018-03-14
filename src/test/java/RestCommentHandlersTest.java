@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
+import javax.ws.rs.core.Response;
 
 import org.junit.Test;
 
@@ -60,6 +61,20 @@ public class RestCommentHandlersTest {
         assertEquals(replies.get(0).getCommenter(), returned.get(0).getCommenter());
         
     
+    }
+
+    @Test
+    public void testDeleteComment() throws IOException {
+        Response response = cc.sendPostTextRequestAndGetResponse("comments/0/remove", "Admin");
+        assertEquals(response.getStatus(), 200);
+
+        ss = ss.readFromStorage("storage.json");
+
+        Comment deleted = ss.getCommentByID(0);
+
+        assertEquals(deleted.getText(), "This comment has been removed by an administrator.");
+
+
     }
 
 

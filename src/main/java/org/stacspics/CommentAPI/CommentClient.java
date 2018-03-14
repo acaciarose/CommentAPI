@@ -81,8 +81,6 @@ public class CommentClient {
                                 .post(
                                     Entity.entity(message,
                                     "text/plain"));
-
-                                    System.out.println("HELLO I AM HERE " + response.getStatus());
                                 
             return response;
     
