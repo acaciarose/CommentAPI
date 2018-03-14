@@ -1,6 +1,6 @@
 package org.stacspics.CommentAPI;
 
-//Stores list of all users and photographs on the system
+//Stores list of all users, comments, and photographs on the system
 //as well as the ID Generator
 
 import java.util.ArrayList;
@@ -18,10 +18,14 @@ import java.nio.file.Paths;
 
 public class SystemStorage {
 
-    //Map of user objects to username
+    //Map of usernames to users
     private HashMap<String, User> users;
+
+    //Map of usernames to lists of users' photos
     private HashMap<String, ArrayList<Photograph>> photographs;
     private IDGenerator IDgen;
+
+    //Map of CommentIDs to comments
     private HashMap<String, Comment> comments;
 
     public SystemStorage() {
@@ -62,6 +66,7 @@ public class SystemStorage {
         return users.get(name);
     }
 
+    //Return list of user's photos
     public ArrayList<Photograph> getPhotosFromUserName(String name) {
         return photographs.get(name);
     }
@@ -90,9 +95,12 @@ public class SystemStorage {
         return comments;
     }
 
+    
     public void addCommentToSystem(Comment comment) throws IOException {
         
         comments.put(Integer.toString(comment.getID()), comment);
+
+        //Make sure the new value is written to storage
         writeToStorage("storage.json");
     }
 
@@ -100,10 +108,9 @@ public class SystemStorage {
                 return comments.get(Integer.toString(ID));
     }
 
-    //Populate system storage with dummy users and photos
+    //Populate or overwrite system storage with dummy users and photos
     //for demonstration purposes
     public boolean populateDummyStorage() {
-        //Reset - for test purposes
 
         try {
         users = new HashMap<String, User>();
@@ -138,7 +145,6 @@ public class SystemStorage {
     //A more comprehensive dummy storage generator, with comments
     public boolean populateDummyStorageWithComments() {
         try {
-                //Reset - for test purposes
                 users = new HashMap<String, User>();
                 photographs = new HashMap<String, ArrayList<Photograph>>();
                 IDgen = new IDGenerator();
@@ -181,6 +187,7 @@ public class SystemStorage {
         return gson.toJson(this);
     } 
 
+    //Write the current SystemStorage to the persistent store (i.e. the json file)
     public void writeToStorage(String filename)  throws IOException {
         File file = new File(filename);
         FileWriter f = new FileWriter(file);
@@ -188,6 +195,7 @@ public class SystemStorage {
         f.close();
     }
 
+    //Read from storage file into new SystemStorage object
     public SystemStorage readFromStorage(String filename) {
         try{
         File file = new File(filename);

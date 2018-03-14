@@ -23,7 +23,8 @@ import java.io.InputStreamReader;
 
 import java.net.URL;
 
-//Client class. Designed to take requests from user (command line), relay them to the server, and display the response (if any)
+//CommentClient: makes get and post requests given paths, and returns their responses
+
 public class CommentClient {
 
     //GET request with given path
@@ -37,12 +38,7 @@ public class CommentClient {
                 if (urlconn instanceof HttpURLConnection) {
                 final HttpURLConnection conn = (HttpURLConnection) urlconn;
                 conn.connect();
-
-                
-                System.err.println(conn.getResponseCode() + ": " + conn.getResponseMessage());
-
-
-        
+       
                     BufferedReader in = new BufferedReader(
                             new InputStreamReader(conn.getInputStream()));
                     String inputLine;
@@ -70,6 +66,7 @@ public class CommentClient {
     }
 
 
+    //Post some data (in the message parameter) to the given path
     public Response sendPostTextRequestAndGetResponse(String path, String message) {
      
         try {
@@ -84,12 +81,6 @@ public class CommentClient {
                                 
             return response;
     
-            
-    
-
-
-    
-
         }   catch (Exception e) {
 
             e.printStackTrace();

@@ -20,7 +20,7 @@ import java.net.URLConnection;
 import java.net.URL;
 
 
-//Server class, originnaly from examples on studres, with alterations
+//Server class, originally from examples on studres, with alterations
 public class Server {
     // Base URI the Grizzly HTTP server will listen on
     public  final String BASE_URI = "http://localhost:8080/myapp/";

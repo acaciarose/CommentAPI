@@ -49,14 +49,18 @@ public String getCommentFromID(@PathParam("commentID") String commentID) {
 @Consumes("text/plain")
 @Produces("text/plain")
 @Path("/{commentID}/remove")
+//This has to check if the user (username given in data) has admin privileges first
 public Response deleteComment(@PathParam("commentID") String commentID, String data) {
     Comment comment = ss.getCommentByID(Integer.parseInt(commentID));
     User deleter = ss.getUserFromUserName(data);
+
     if (comment.remove(deleter, ss)) {
+        //Admin privileges present
         return Response.ok().entity("Successfully deleted.").build();
     }
 
     else {
+        //No admin, reject request
         return Response.status(Response.Status.BAD_REQUEST).build();
     }
 

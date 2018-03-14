@@ -11,6 +11,7 @@ import java.util.List;
 //IO Manager. Prompts for login and makes calls to the client.
 
 public class Client {
+    //Run main input reader
     public void runCommandLineReader() throws IOException {
         Scanner command = new Scanner(System.in);
         String responsestring = "";
@@ -24,14 +25,15 @@ public class Client {
 
 
         System.out.println("Welcome to CommentAPI!");
-        System.out.println("Please login. Enter username: ");
+        System.out.println("Please login. Enter username, from choice of: ");
+        System.out.println("User1 User2 User3 Admin");
         boolean loggedIn = false;
 
         CommentClient client = new CommentClient();
         
 
-        
-
+        //Very basic and not secure login functionality
+        //Could be easily replaces/improved if necessary
         while (!loggedIn) {
 
             name = command.nextLine();
@@ -51,16 +53,20 @@ public class Client {
 
         boolean running = true;
     
-        while (running){
+        //Main command loop
+        while (running) {
 
-            //split by spaces
+            //Split by spaces, except when in speech marks!
             //regex from https://stackoverflow.com/a/7804472
             List<String> list = new ArrayList<String>();
             Matcher m = Pattern.compile("([^\"]\\S*|\".+?\")\\s*").matcher(command.nextLine());
             while (m.find())
                 list.add(m.group(1));
     
-            switch(list.get(0).toLowerCase()) {
+            
+            String firstPartOfCommand = list.get(0).toLowerCase();
+            switch(firstPartOfCommand) {
+            //Names of below cases should be fairly self explanatory
 
             case "postcommentonphoto":
                 String commentText = list.get(1);
@@ -71,7 +77,6 @@ public class Client {
                 response = client.sendPostTextRequestAndGetResponse(path, commentText);
 
                 System.out.println("Response code: " + response.getStatus());
-
                 System.out.println("Created comment id: " + response.readEntity(String.class));
                 
                 break;
@@ -189,7 +194,7 @@ public class Client {
                 running = false;
                 break;
 
-
+            //Catches mistyped/wrong commands
             default:
                 System.out.println("Command not recognized!");
                 break;
@@ -204,6 +209,7 @@ public class Client {
         try {
         client.runCommandLineReader();
         } 
+        
         catch (IOException e) {
             System.out.println("Error occurred. Shutting down....");
             e.printStackTrace();
