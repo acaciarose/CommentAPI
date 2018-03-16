@@ -9,12 +9,12 @@ import com.google.gson.*;
 public class Photograph {
     //This field might be changed to be an actual user object in the future
     private String ownerUserName;
-    private ArrayList<Comment> comments;
+    private ArrayList < Comment > comments;
     private int photographID;
 
     public Photograph(String user, IDGenerator IDgen) {
         ownerUserName = user;
-        comments =  new ArrayList<Comment>();
+        comments = new ArrayList < Comment > ();
         photographID = IDgen.createPhotographID();
     }
 
@@ -26,7 +26,7 @@ public class Photograph {
         return photographID;
     }
 
-    public ArrayList<Comment> getComments() {
+    public ArrayList < Comment > getComments() {
         return comments;
     }
 
@@ -37,11 +37,8 @@ public class Photograph {
     public String turnToJsonString() {
         Gson gson = new Gson();
         return gson.toJson(this);
-        
-        
+
+
     }
-
-
-
 
 }

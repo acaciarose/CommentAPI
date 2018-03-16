@@ -9,15 +9,15 @@ import java.io.IOException;
 public class User {
 
     private String username;
-    private ArrayList<Notification> notifications;
-    private ArrayList<Comment> comments;
+    private ArrayList < Notification > notifications;
+    private ArrayList < Comment > comments;
     private boolean isAdmin;
 
 
     public User(String name, boolean hasAdmin) {
         username = name;
-        notifications = new ArrayList<Notification>();
-        comments = new ArrayList<Comment>();
+        notifications = new ArrayList < Notification > ();
+        comments = new ArrayList < Comment > ();
         isAdmin = hasAdmin;
     }
 
@@ -53,33 +53,31 @@ public class User {
 
 
 
-         try {
-        //Write subject comment back to storage
-        ss.addCommentToSystem(comment);
+        try {
+            //Write subject comment back to storage
+            ss.addCommentToSystem(comment);
 
 
 
-        //Update photo in storage
-        ss.addPhotoToSystem(photo);
+            //Update photo in storage
+            ss.addPhotoToSystem(photo);
 
 
 
-        //Add this user back to storage, with his/her new comments list
-        ss.addUserToSystem(this);
+            //Add this user back to storage, with his/her new comments list
+            ss.addUserToSystem(this);
 
 
 
-         //Finally, update other user in storage
-         ss.addUserToSystem(otherUser);
+            //Finally, update other user in storage
+            ss.addUserToSystem(otherUser);
 
 
 
-         return true;
-         }
-
-         catch (IOException e) {
-             return false;
-         }
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
 
     }
 
@@ -93,62 +91,56 @@ public class User {
         //Add reply on other user's comment
         comment.addReply(reply);
 
-   
+
         //Notify other user
         User otherUser = ss.getUserFromUserName(comment.getCommenter());
         handleNotification(otherUser, username, replytext, reply);
 
         try {
-        //Write subject comment back to storage
-        ss.addCommentToSystem(comment);
+            //Write subject comment back to storage
+            ss.addCommentToSystem(comment);
 
-        //Add new reply comment to storage
-        ss.addCommentToSystem(reply);
+            //Add new reply comment to storage
+            ss.addCommentToSystem(reply);
 
-        //Add this user back to storage, with his/her new comments list
-        ss.addUserToSystem(this);
+            //Add this user back to storage, with his/her new comments list
+            ss.addUserToSystem(this);
 
-        //Finally, write other user to system
-        ss.addUserToSystem(otherUser);
+            //Finally, write other user to system
+            ss.addUserToSystem(otherUser);
 
-        return true;
-        }
-
-        catch (IOException e) {
+            return true;
+        } catch (IOException e) {
             return false;
         }
     }
 
-    public ArrayList<Comment> getComments() {
+    public ArrayList < Comment > getComments() {
         return comments;
     }
 
-    public ArrayList<Notification> getNotifications(SystemStorage ss) {
+    public ArrayList < Notification > getNotifications(SystemStorage ss) {
         //Here we assume that "get" means the user reads the notifications
         //So we can mark them as read
         //Only return notifications that are marked as unread
 
-        ArrayList<Notification> unreadNotifications = new ArrayList<Notification>();
+        ArrayList < Notification > unreadNotifications = new ArrayList < Notification > ();
 
-        for (Notification n : notifications) {
+        for (Notification n: notifications) {
             if (!n.checkIfRead()) {
                 unreadNotifications.add(n);
                 n.markAsRead();
-            }
-            else{
-            }
+            } 
         }
 
         try {
             ss.addUserToSystem(this);
             return unreadNotifications;
-        }
-
-        catch (IOException e) {
+        } catch (IOException e) {
             return null;
         }
 
-        
+
     }
 
     private void addToNotifications(Notification n) {
@@ -157,19 +149,19 @@ public class User {
 
 
     private void handleNotification(User otherUser, String userName, String commenttext, Comment comment) {
-        
-        String notificationText = "User" + userName + "commented on something you posted : " + commenttext; 
+
+        String notificationText = "User" + userName + "commented on something you posted : " + commenttext;
         Notification n = new Notification(notificationText, comment);
         otherUser.addToNotifications(n);
     }
 
     public String turnToJsonString() {
         Gson gson = new Gson();
-        return gson.toJson(this);      
-        
+        return gson.toJson(this);
+
     }
 
-  
+
 
 
 }

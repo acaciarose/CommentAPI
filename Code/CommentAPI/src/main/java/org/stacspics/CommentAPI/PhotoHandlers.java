@@ -13,26 +13,23 @@ import java.io.InputStream;
 
 
 import java.util.ArrayList;
+
+//REST functions for handling photo-related requests 
 @Path("/photos")
-//REST functions for handling user-related requests 
 public class PhotoHandlers {
-Gson gson = new Gson();
-SystemStorage ss = new SystemStorage().readFromStorage("storage.json");
+    Gson gson = new Gson();
+    SystemStorage ss = new SystemStorage().readFromStorage("storage.json");
 
 
-@GET
-@Path("{photoID}/comments")
-@Produces("text/plain")
-public String getPhotosComments(@PathParam("photoID") int photoID) {
-    Photograph photo = ss.getPhotoFromID(photoID);
-    ArrayList<Comment> comments = photo.getComments();
+    @GET
+    @Path("{photoID}/comments")
+    @Produces("text/plain")
+    public String getPhotosComments(@PathParam("photoID") int photoID) {
+        Photograph photo = ss.getPhotoFromID(photoID);
+        ArrayList < Comment > comments = photo.getComments();
 
-    return gson.toJson(comments);
-}
-
-
-
+        return gson.toJson(comments);
+    }
 
 
 }
-

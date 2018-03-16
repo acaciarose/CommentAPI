@@ -23,7 +23,7 @@ import java.net.URL;
 //Server class, originally from examples on studres, with alterations
 public class Server {
     // Base URI the Grizzly HTTP server will listen on
-    public  final String BASE_URI = "http://localhost:8080/myapp/";
+    public final String BASE_URI = "http://localhost:8080/myapp/";
     private HttpServer server;
 
     public void startServer() {
@@ -36,8 +36,8 @@ public class Server {
         // exposing the Jersey application at BASE_URI
         server = GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
 
-        System.out.println(String.format("Jersey app started with WADL available at "
-        + "%sapplication.wadl.", BASE_URI));
+        System.out.println(String.format("Jersey app started with WADL available at " +
+            "%sapplication.wadl.", BASE_URI));
     }
 
     public void stopServer() {
@@ -51,7 +51,4 @@ public class Server {
     }
 
 
-
-
 }
-

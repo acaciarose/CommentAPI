@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="RestUserHandlersTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2018-03-16T20:32:42" hostname="pc3-064-l.cs.st-andrews.ac.uk" time="0.602">
+<testsuite name="RestUserHandlersTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2018-03-16T20:42:52" hostname="pc3-064-l.cs.st-andrews.ac.uk" time="0.389">
   <properties/>
-  <testcase name="testPostUserCommentOnPhoto" classname="RestUserHandlersTest" time="0.23"/>
-  <testcase name="testGetNotifications" classname="RestUserHandlersTest" time="0.026"/>
-  <testcase name="testGetUserComments" classname="RestUserHandlersTest" time="0.052"/>
-  <testcase name="testPostUserReplyOnComment" classname="RestUserHandlersTest" time="0.293"/>
+  <testcase name="testPostUserCommentOnPhoto" classname="RestUserHandlersTest" time="0.231"/>
+  <testcase name="testGetNotifications" classname="RestUserHandlersTest" time="0.025"/>
+  <testcase name="testGetUserComments" classname="RestUserHandlersTest" time="0.049"/>
+  <testcase name="testPostUserReplyOnComment" classname="RestUserHandlersTest" time="0.082"/>
   <system-out><![CDATA[Jersey app started with WADL available at http://localhost:8080/myapp/application.wadl.
-org.stacspics.CommentAPI.User@45d02c99
+org.stacspics.CommentAPI.User@64386b11
 User1
 1
 ]]></system-out>
-  <system-err><![CDATA[Mar 16, 2018 8:32:41 PM org.glassfish.grizzly.http.server.NetworkListener start
+  <system-err><![CDATA[Mar 16, 2018 8:42:52 PM org.glassfish.grizzly.http.server.NetworkListener start
 INFO: Started listener bound to [localhost:8080]
-Mar 16, 2018 8:32:41 PM org.glassfish.grizzly.http.server.HttpServer start
+Mar 16, 2018 8:42:52 PM org.glassfish.grizzly.http.server.HttpServer start
 INFO: [HttpServer] Started.
-Mar 16, 2018 8:32:42 PM org.glassfish.grizzly.http.server.NetworkListener shutdownNow
+Mar 16, 2018 8:42:52 PM org.glassfish.grizzly.http.server.NetworkListener shutdownNow
 INFO: Stopped listener bound to [localhost:8080]
 ]]></system-err>
 </testsuite>

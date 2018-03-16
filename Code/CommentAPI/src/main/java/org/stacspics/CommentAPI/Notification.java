@@ -36,8 +36,8 @@ public class Notification {
     public String turnToJsonString() {
         Gson gson = new Gson();
         return gson.toJson(this);
-        
-        
+
+
     }
 
 }

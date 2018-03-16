@@ -29,64 +29,64 @@ public class CommentClient {
 
     //GET request with given path
     public String sendGetRequestAndReturnServerResponse(String path) throws IOException {
- 
-                URL url = new URL("http", "localhost", 8080, "/myapp" + path);
-     
-                final String protocol = url.getProtocol();
-                if (protocol.equalsIgnoreCase("http")) {
-                final URLConnection urlconn = url.openConnection();
-                if (urlconn instanceof HttpURLConnection) {
+
+        URL url = new URL("http", "localhost", 8080, "/myapp" + path);
+
+        final String protocol = url.getProtocol();
+        if (protocol.equalsIgnoreCase("http")) {
+            final URLConnection urlconn = url.openConnection();
+            if (urlconn instanceof HttpURLConnection) {
                 final HttpURLConnection conn = (HttpURLConnection) urlconn;
                 conn.connect();
-       
-                    BufferedReader in = new BufferedReader(
-                            new InputStreamReader(conn.getInputStream()));
-                    String inputLine;
-                    String response = "";
-            
-                    //The last line of the HTTP response is the body/text we want
-                    while ((inputLine = in.readLine()) != null) {
-                        response = inputLine;
-                    }
 
-                in.close();
-                
+                BufferedReader in = new BufferedReader(
+                    new InputStreamReader(conn.getInputStream()));
+                String inputLine;
+                String response = "";
+
+                //The last line of the HTTP response is the body/text we want
+                while ((inputLine = in .readLine()) != null) {
+                    response = inputLine;
+                }
+
+                in .close();
+
 
                 //Return server's response (a JSON string containing the information we asked for)
                 return response;
 
-            
-        
-                } else {
+
+
+            } else {
                 throw new RuntimeException("Got URLConnection of type " + urlconn.getClass());
-                }
-                } else {
-                throw new IllegalArgumentException("URL needs to use the HTTP or HTTPS protocols.");
-                }
+            }
+        } else {
+            throw new IllegalArgumentException("URL needs to use the HTTP or HTTPS protocols.");
+        }
     }
 
 
     //Post some data (in the message parameter) to the given path
     public Response sendPostTextRequestAndGetResponse(String path, String message) {
-     
+
         try {
 
             Client client = ClientBuilder.newClient();
             WebTarget webTarget = client.target("http://localhost:8080/myapp" + path);
             Response response = webTarget
-                                .request("text/plain")
-                                .post(
-                                    Entity.entity(message,
-                                    "text/plain"));
-                                
+                .request("text/plain")
+                .post(
+                    Entity.entity(message,
+                        "text/plain"));
+
             return response;
-    
-        }   catch (Exception e) {
+
+        } catch (Exception e) {
 
             e.printStackTrace();
             return null;
-    
-          }
+
+        }
 
     }
 
@@ -94,9 +94,8 @@ public class CommentClient {
 
 
 
-        
 
-    
-    
+
+
+
 }
-

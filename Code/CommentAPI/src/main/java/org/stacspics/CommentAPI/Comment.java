@@ -11,12 +11,10 @@ import com.google.gson.*;
 public class Comment {
     private String commentText;
     private String userName;
-    //CommentID may not be necessary: adding just in case, will review later
     private int commentID;
     private int numberOfUpvotes;
     private Timestamp timestamp;
-    private ArrayList<Comment> children;
-    private boolean isTopLevel;
+    private ArrayList < Comment > children;
 
     public Comment(String text, String username, boolean topLevel, IDGenerator IDgen) {
         commentText = text;
@@ -24,8 +22,7 @@ public class Comment {
         numberOfUpvotes = 0;
         commentID = IDgen.createCommentID();
         timestamp = new Timestamp(System.currentTimeMillis());
-        children = new ArrayList<Comment>();
-        isTopLevel = topLevel;
+        children = new ArrayList < Comment > ();
     }
 
 
@@ -33,7 +30,7 @@ public class Comment {
         children.add(reply);
     }
 
-    public ArrayList<Comment> getAllReplies() {
+    public ArrayList < Comment > getAllReplies() {
         return children;
     }
 
@@ -41,11 +38,10 @@ public class Comment {
         numberOfUpvotes++;
 
         try {
-        //Update comment in storage
-        ss.addCommentToSystem(this);
-        return true;
-        }
-        catch (IOException e) {
+            //Update comment in storage
+            ss.addCommentToSystem(this);
+            return true;
+        } catch (IOException e) {
             return false;
         }
     }
@@ -58,10 +54,9 @@ public class Comment {
             //Update comment in storage
             ss.addCommentToSystem(this);
             return true;
-            }
-            catch (IOException e) {
-                return false;
-            }
+        } catch (IOException e) {
+            return false;
+        }
     }
 
     public int getUpvotes() {
@@ -88,10 +83,9 @@ public class Comment {
                 //Update comment in storage
                 ss.addCommentToSystem(this);
                 return true;
-                }
-                catch (IOException e) {
-                    return false;
-                }
+            } catch (IOException e) {
+                return false;
+            }
 
 
         }
@@ -102,8 +96,8 @@ public class Comment {
     public String turnToJsonString() {
         Gson gson = new Gson();
         return gson.toJson(this);
-        
-        
+
+
     }
 
 }

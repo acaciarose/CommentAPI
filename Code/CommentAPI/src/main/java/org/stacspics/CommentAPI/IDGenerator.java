@@ -2,7 +2,6 @@ package org.stacspics.CommentAPI;
 
 //Comemnt ID Generator
 //Gives out unique comment IDs
-//May not be needed but implemented for now
 
 public class IDGenerator {
     private int commentID;
@@ -31,5 +30,3 @@ public class IDGenerator {
 
 
 }
-
-   
