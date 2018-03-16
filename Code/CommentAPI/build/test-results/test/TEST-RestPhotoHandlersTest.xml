@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="RestPhotoHandlersTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-03-16T20:32:43" hostname="pc3-064-l.cs.st-andrews.ac.uk" time="0.008">
+  <properties/>
+  <testcase name="testGetPhotoComments" classname="RestPhotoHandlersTest" time="0.008"/>
+  <system-out><![CDATA[Jersey app started with WADL available at http://localhost:8080/myapp/application.wadl.
+]]></system-out>
+  <system-err><![CDATA[Mar 16, 2018 8:32:43 PM org.glassfish.grizzly.http.server.NetworkListener start
+INFO: Started listener bound to [localhost:8080]
+Mar 16, 2018 8:32:43 PM org.glassfish.grizzly.http.server.HttpServer start
+INFO: [HttpServer-2] Started.
+Mar 16, 2018 8:32:43 PM org.glassfish.grizzly.http.server.NetworkListener shutdownNow
+INFO: Stopped listener bound to [localhost:8080]
+]]></system-err>
+</testsuite>

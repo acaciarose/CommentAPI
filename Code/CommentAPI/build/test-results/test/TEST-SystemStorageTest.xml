@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SystemStorageTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2018-03-16T20:32:43" hostname="pc3-064-l.cs.st-andrews.ac.uk" time="0.064">
+  <properties/>
+  <testcase name="testUserAddition" classname="SystemStorageTest" time="0.003"/>
+  <testcase name="testCommentReplyAddition" classname="SystemStorageTest" time="0.024"/>
+  <testcase name="testUpvoteDownvote" classname="SystemStorageTest" time="0.017"/>
+  <testcase name="testPhotoCommentAddition" classname="SystemStorageTest" time="0.017"/>
+  <testcase name="testPhotoAddition" classname="SystemStorageTest" time="0.001"/>
+  <testcase name="testSystemStorageCreation" classname="SystemStorageTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
